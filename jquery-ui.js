@@ -519,7 +519,7 @@ $.widget.bridge = function( name, object ) {
 			if ( args.length ) {
 				options = $.widget.extend.apply( null, [ options ].concat(args) );
 			}
-            console.log(this)
+            
 			this.each(function() {
 				var instance = $.data( this, fullName );
 				

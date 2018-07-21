@@ -57,6 +57,7 @@
             var debug_impt_position = $(".html_page").css("height")
             debug["debug object.self"][0] ? console.log(debug_impt_position) : ""
             var debug_placement;
+            var object_looker;
             var debug_properties = [
                 {
                 "background-color":"yellow",
@@ -153,9 +154,9 @@
                     debug["debug object.self"][0] ? console.log(event) : ""
                     })
                 })
-                clearInterval(object_looker)
-                
-                
+                debug["debug object.self"][1] ? console.log("attached the events") : ""
+                clearTimeout(object_looker)
+
             }
             // object_looker = setInterval(event_linker,11000)
             ///////////////////////////////////////////////////////////////
@@ -276,9 +277,9 @@
                     "background-color":"red",
                     "margin-left":"10em"
                 })
+                
+                 object_looker = setTimeout(event_linker,510)
             })
-            
-            var object_looker = setInterval(event_linker,110)
             
                 
             

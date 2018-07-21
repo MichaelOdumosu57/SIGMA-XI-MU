@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <zoom_listener>
+        <Google>true</Google>
+        <Firefox>false</Firefox>
+        <IE>false</IE>
+        <XS>false</XS>
+        <SM>false</SM>
+        <MD>false</MD>
+        <LG>true</LG>
+    </zoom_listener>
+    <outside_border>
+        <Google>true</Google>
+        <Firefox>false</Firefox>
+        <IE>false</IE>
+        <XS>false</XS>
+        <SM>false</SM>
+        <MD>false</MD>
+        <LG>true</LG>
+    </outside_border>
+</table>

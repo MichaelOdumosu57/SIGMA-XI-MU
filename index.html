@@ -16,6 +16,8 @@
     <script src="./jquery_carousel.js"></script>
     <script src="./jquery_michael_toggle.js"></script>
     <script src="./site_map_instruction.js"></script>
+    <script src="./API/format.js"></script>
+    <script src="./API/jquery_app.js"></script>
     <!--<script src="./navigation.js"></script>-->
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
@@ -28,6 +30,9 @@
 
   <!-- developer use of libaries to have website act as designed -->
   <script>
+
+  
+  
   // helper function
 {
   function text_dimension(string_selector)
@@ -71,63 +76,25 @@
 
 
 
-            //the html container
-            
-                // helper function
-                    
-                    function listening_zoom(){
-                        var know_change = (browser_window.visualViewport.width/2) - (browser_window.outerWidth/2)
-                        console.log("executing")
-                        if(know_change != $(".html_page").offset()["left"]){
-                            $(".html_page").offset({
-                                left:  know_change
-                            })
-                        }
-                        
-                    }
-                    
-                ////////////////////////////////////////////////////////////////////
-                // this function helps the browser know how to resize the html window
-                // know_change is the flag that lets the function know that the zoom has changed
-                ////////////////////////////////////////////////////////////////////
-                
-                console.log(browser_window.visualViewport.width)
-                $(".html_page").css({
-                    "width":  browser_window.outerWidth,
-                    "height":  browser_window.outerHeight,
-                    "border": "3px solid rgb(227,227,227)",
-                    "position":"absolute"
-                    
-                })
-                
-                setInterval(listening_zoom,.00001)
-                
-                
-                
+            // editing the html container
+
+                if(debug[0] == true){
+                    console.log(browser_window.visualViewport.width)
+                }
 
                 
             ////////////////////////////////////////////////////////////////////
-            // the html container was designed for the problem presented by zooming functionality of different websites and the media device dimensions presented
-            // nothing should be outside of this container, its is a container now but hopefully code will be  used to solidify the barrier that the the container will present
-            // three things required the container to do
-                // mobile responiveness
-                // item placement suggestion
-                // zoom size
-                
             // browser_window.visualViewport.width is responsible for the width ratio change when the page zoom is changed
+            //  leading_navigation will be nacigation control, if it refuses to stay in the html container something must be done
             ////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
+            
+             /*FIX ME */
+            // in firefox window the outerwidth is not the same find a way around this
+            ////////////////////////////////////////////////////////////////////
 
 
             // position fix
-            $("body > *").css({
+            $("body > *:not('.debug')").css({
               "position":"absolute"
             })
 
@@ -140,21 +107,9 @@
   </script>
   
 <body>
-    <div class = "html_page container "></div>
-
-
-    
-
-
-
-    
-
-
-  
-
-
-  
-  <div class = "navbar-brand"></div>
+    <div class = "html_page container ">
+        <div class ="leading_navigation"></div>
+    </div>
 
 </body>
 </html>

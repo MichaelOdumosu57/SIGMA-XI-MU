@@ -1,5 +1,6 @@
 
-// in this version if adv_clone is called more than one times, it know to cut off the first copy as it had made too many clones
+// in this version debuggers can be turn on or off
+// strange in certain instance when you call the function with only brackets inside of it it can remove a clone for you
     //capabilities:core cloning functionality
     //            : cloning as many items as needed
     //            : returns a length of all the clones
@@ -9,6 +10,7 @@
 
 
     //planned work
+    //            :abilitty to remove a certain amount of clones
 
 
 
@@ -17,6 +19,9 @@
     //             : customization for each clone
     //             : cloning of more than one selector and returning an array of everything
 
+    // properties
+    // remove, specfices an amount of clones you would like to be removed the extension removes all clones when the items = 0 or are not specified --for creater, test the remove property make sure it moves in all cases
+    // debug, set to false on default, turns on the debugger to help you code
 
 var call = 0;
     jQuery.fn.extend({
@@ -33,7 +38,14 @@ var call = 0;
                 //////////////////////////////////////////////////////////////
 
 
-
+                // debugger
+                if(michael.debug == undefined){
+                    michael.debug = false
+                }
+                //////////////////////////////////////////////////////////////
+                //
+                //////////////////////////////////////////////////////////////
+                
 
                 //determining argument type
                 var $clone_count
@@ -46,9 +58,12 @@ var call = 0;
                 }
 
                 else if(typeof(michael) == "object"){
+                    if(michael.remove != undefined){
+                        michael.items = 1;
+                    }
                     var count = parseInt(michael.items)
                     $clone_count = parseInt(michael.items) -4;
-                    console.log(count)
+                    michael.debug ? console.log(count) : ""
 
                 }
 
@@ -74,7 +89,7 @@ var call = 0;
                 var $clone = $(clone_selector).clone();
                 if($clone_count > -3 || count == 1 ){
                     $(clone_selector).after($clone);
-                    console.log("made a clone with $clone ",$(this.selector).length)
+                    michael.debug ?console.log("made a clone with $clone ",$(this.selector).length) : ""
                 }
 
                 var $clone_clone  =  $clone.clone();
@@ -82,13 +97,13 @@ var call = 0;
 
                 if($clone_count > -2 || count == 2 ){
                     $last_clone.after($clone_clone);
-                    console.log("made a clone with $clone_clone",$(this.selector).length)
+                    michael.debug ? console.log("made a clone with $clone_clone",$(this.selector).length) : ""
 
                 }
                 $clone_count += 1;   //becuase additional calls are making x-1 calls, beucase one is already present
                 while($clone_count >= 0){
                     $last_clone.after($last_clone.clone());
-                    console.log("made a clone with $last_clone",$(this.selector).length)
+                    michael.debug ? console.log("made a clone with $last_clone",$(this.selector).length) : ""
                     $clone_count -= 1;
                 }
 
@@ -98,11 +113,11 @@ var call = 0;
 
                     var clone_UI = {};
                     var widget_UI_selector = $(this).selector;
-                    console.log(widget_UI_selector)
+                    michael.debug ? console.log(widget_UI_selector) : ""
                     if(typeof(michael.UI) == "object"){
 
                         michael.UI.forEach(function(UI,index){
-                            console.log("hit")
+                            michael.debug ? console.log("hit") : ""
                             // michael.UIC = UI;
                             clone_UI[UI] = UI;
                             $(widget_UI_selector)[Object.keys(clone_UI)[index]]()
@@ -119,7 +134,7 @@ var call = 0;
 
 
                     else{
-                        console.log(typeof(michael.UI))
+                        michael.debug ? console.log(typeof(michael.UI)) : ""
                         $(this.selector)[michael.UI]()
                     }
 
@@ -133,12 +148,38 @@ var call = 0;
 
 
 
-
                 if(call == 1 ){
                     $(this.selector + ":first").remove()
-                    console.log(call)
+                    michael.debug ? console.log(call) : ""
                     call = 0;
                 }
+                
+                    // removing  clones
+                    {
+                        if(michael.remove != undefined){
+                            var if_dynamics = michael.remove
+                            var orig_total =$(this).length
+                             michael.debug ? console.log("what you working with",$(this).length - michael.remove,michael.remove) : ""
+                             
+                             while(michael.remove != 0 ){
+                                 michael.debug ? console.log("removed it",orig_total,if_dynamics,$(this).length) : ""
+                                 $(this).eq($(this).length -1).remove()
+                                 michael.remove -= 1;
+                             }
+                             
+                             
+                             
+                        }
+                    }
+                    
+                    
+                    ///////////////////////////////////////////////////////////////
+                    // sometimes you want to remove a certain amount of clones, for simplicity this
+                    // section is dedicated to doing just that. later individualization will be considered
+                    // we need a check to see if it was removed properly
+                    // var if_dynamics is to help the algorithm know if dynamics wasnt at play manifest in the rest of the plugin
+                    // var orig_total, help the alogrithm know how clones to properly take out
+                    ///////////////////////////////////////////////////////////////
 
                 return $.map($(this.selector + (":not(.delete)")),function(value,index){
                     if(michael.specifiers != undefined){
@@ -181,8 +222,8 @@ var addFnCounter = function(target){
     return function(){
         swap.apply(null);
         count++;
-        console.log("func has been called " + count + " times");
-        console.log("\n");
+        michael.debug ? console.log("func has been called " + count + " times") : ""
+        michael.debug ? console.log("\n") : ""
     };
 };
 

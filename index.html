@@ -1,0 +1,160 @@
+
+
+
+
+<html lang = "en" charset = "UTF-8">
+
+  <!-- required libraries to help make the website work, the src is the path name, to make sure it is retrivied from their proper folders -->
+  <head>
+    <script src="./jquery-1.10.2.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <script src="./jquery_rolodex.js"></script>
+    <script src="./jquery_parallax.js"></script>
+    <script src="./jquery_rotate.js"></script>
+    <script src="./jquery_adv_clone.js"></script>
+    <script src="./jquery_pretty_print.js"></script>
+    <script src="./jquery_carousel.js"></script>
+    <script src="./jquery_michael_toggle.js"></script>
+    <script src="./site_map_instruction.js"></script>
+    <!--<script src="./navigation.js"></script>-->
+    <script src="./bootstrap.min.js"></script>
+    <script src="./dimension_parser.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=.21">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./sigma_phi_mu.css">
+
+  </head>
+
+  <!-- developer use of libaries to have website act as designed -->
+  <script>
+  // helper function
+{
+  function text_dimension(string_selector)
+  {
+      var canvas = document.createElement("canvas");
+      var ctx = canvas.getContext("2d");
+      ctx.font =  string_selector.css("font-size") + " " + string_selector.css("font-family") ;  // This can be set programmaticly from
+      var textWidth = ctx.measureText(string_selector.text()).width;
+      return textWidth
+  }
+}
+  //////////////////////////////////////////////////////////////
+  // this function returns the text width and height of given strings
+  //////////////////////////////////////////////////////////////
+
+// helper function
+{
+  function wait(ms){
+     var start = new Date().getTime();
+     var end = start;
+     while(end < start + ms) {
+       end = new Date().getTime();
+    }
+  }
+}
+    //////////////////////////////////////////////////////////////
+    // this function returns the text width and height of given strings
+    //////////////////////////////////////////////////////////////
+
+      $(document).ready(function() {
+
+            // selector for one page
+            {
+            var ids = document.location.href.split("/")
+            $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
+
+            }
+            ////////////////////////////////////////////////////////////////////
+            //places a sticker for classification of the items in the webpage
+            ////////////////////////////////////////////////////////////////////
+
+
+
+            //the html container
+            
+                // helper function
+                    
+                    function listening_zoom(){
+                        var know_change = (browser_window.visualViewport.width/2) - (browser_window.outerWidth/2)
+                        console.log("executing")
+                        if(know_change != $(".html_page").offset()["left"]){
+                            $(".html_page").offset({
+                                left:  know_change
+                            })
+                        }
+                        
+                    }
+                    
+                ////////////////////////////////////////////////////////////////////
+                // this function helps the browser know how to resize the html window
+                // know_change is the flag that lets the function know that the zoom has changed
+                ////////////////////////////////////////////////////////////////////
+                
+                console.log(browser_window.visualViewport.width)
+                $(".html_page").css({
+                    "width":  browser_window.outerWidth,
+                    "height":  browser_window.outerHeight,
+                    "border": "3px solid rgb(227,227,227)",
+                    "position":"absolute"
+                    
+                })
+                
+                setInterval(listening_zoom,.00001)
+                
+                
+                
+
+                
+            ////////////////////////////////////////////////////////////////////
+            // the html container was designed for the problem presented by zooming functionality of different websites and the media device dimensions presented
+            // nothing should be outside of this container, its is a container now but hopefully code will be  used to solidify the barrier that the the container will present
+            // three things required the container to do
+                // mobile responiveness
+                // item placement suggestion
+                // zoom size
+                
+            // browser_window.visualViewport.width is responsible for the width ratio change when the page zoom is changed
+            ////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+            // position fix
+            $("body > *").css({
+              "position":"absolute"
+            })
+
+
+
+            ////////////////////////////////////////////////////////////////////
+            // global fix for purposeful programming
+            ////////////////////////////////////////////////////////////////////
+       });
+  </script>
+  
+<body>
+    <div class = "html_page container "></div>
+
+
+    
+
+
+
+    
+
+
+  
+
+
+  
+  <div class = "navbar-brand"></div>
+
+</body>
+</html>

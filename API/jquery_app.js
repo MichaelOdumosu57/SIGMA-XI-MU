@@ -1,9 +1,9 @@
 // this app is to provide additional developer tools and give ideas for user interface
 
   //debug control
-    var debug ={"checking device width":[false],
+    var debug ={"checking device width":[false,false],
                 "external objects":[false,false],
-                "debug object.self":[false,false,false]
+                "debug object.self":[false,true,false,false]
                 }
   ///////////////////////////////////////////////////////
   //  to work on this advanced form website development it is essential we have a good debug program, some sort now

@@ -27,57 +27,24 @@ function BrowserCheck()
             var browser_window = window;
             if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
               browser_window = window.top;
-              //
 
-
-              // helper function
-              function firefox_function(){
-
-                      Window_information["browser_width"] = Window_information["zoom_level"]* browser_window.outerWidth
-                      Window_information["browser_height"] = Window_information["zoom_level"]* browser_window.outerHeight
-                      Window_information["visual_width"] = firefox_aux()[0]
-                      Window_information["visual_height"] = firefox_aux()[1]
-
-              }
-              ///////////////////////////////////////////////////////////////////////
-              // since fire fox has a weird way of doing things we will make this fucntion to conteract the misplaed data
-              // if the zooom level is not on 100, you have 3 variables
-                // % for original zoom. % pecent screen on and the width the browser thinks because of it
-                // if at x percent I look like this, then at 100% i look like this
-                //  with firefox if you are using the properties dynamically, you must have them update constantly
-              ///////////////////////////////////////////////////////////////////////
-
-
-                        firefox_function()
-               console.log(Window_information);
             }
 
-            else if(browser[0][0] == "Chrome"){
-              Window_information = {"browser" : browser,
-                                      "zoom_level" : window.devicePixelRatio,
-                                      "browser_width" : browser_window.outerWidth,
-                                      "browser_height" : browser_window.outerHeight,
-                                      "visual_width":aux_function()[0],
-                                      "visual_height":aux_function()[1]
-                                     }
-            }
-
-            else{
                  Window_information = {"browser" : browser,
-                                         "zoom_level" : window.devicePixelRatio,
-                                         "browser_width" : browser_window.outerWidth,
-                                         "browser_height" : browser_window.outerHeight,
-                                         "visual_width":browser_window.visualViewport.width,
-                                         "visual_height":browser_window.visualViewport.height
+                                         "zoom_level" : aux_function()[1],
+                                         "browser_width" : aux_function()[2],
+                                         "browser_height" : aux_function()[3],
+                                         "visual_width":aux_function()[4],
+                                         "visual_height":aux_function()[5]
                                         }
-            }
+
             function aux_function(){
-                if(browser[0][0] == "Firefox" ){
-                    return [browser_window.screen.availWidth, browser_window.screen.availHeight]
+                if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
+                    return [browser,window.devicePixelRatio, Window_information["zoom_level"]*  browser_window.outerWidth,  Window_information["zoom_level"]*  browser_window.outerHeight,browser_window.screen.availWidth, browser_window.screen.availHeight]
                 }
 
                 if(browser[0][0] == "Chrome" ){
-                    return [browser_window.visualViewport.width, browser_window.visualViewport.height]
+                    return [browser,window.devicePixelRatio,browser_window.outerWidth, browser_window.outerHeight,browser_window.visualViewport.width, browser_window.visualViewport.height]
                 }
             }
             ///////////////////////////////////////////////////////////////////////

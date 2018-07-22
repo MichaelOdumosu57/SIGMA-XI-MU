@@ -2,7 +2,7 @@
 <table>
     <zoom_listener>
         <Google>true</Google>
-        <Firefox>false</Firefox>
+        <Firefox>true</Firefox>
         <IE>false</IE>
         <XS>false</XS>
         <SM>false</SM>
@@ -11,11 +11,20 @@
     </zoom_listener>
     <outside_border>
         <Google>true</Google>
-        <Firefox>false</Firefox>
+        <Firefox>true</Firefox>
         <IE>false</IE>
         <XS>false</XS>
         <SM>false</SM>
         <MD>false</MD>
         <LG>true</LG>
     </outside_border>
+    <debugger>
+        <Google>true</Google>
+        <Firefox>true</Firefox>
+        <IE>false</IE>
+        <XS>false</XS>
+        <SM>false</SM>
+        <MD>false</MD>
+        <LG>true</LG>
+    </debugger>
 </table>

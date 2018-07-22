@@ -9,8 +9,8 @@
                 // helper function
 
                     function listening_zoom(){
-                      Window_information["visual_width"] =aux_function()[4]
-                      Window_information["visual_height"] =aux_function()[5]
+						Window_information["visual_width"] =aux_function()[4]
+                      	Window_information["visual_height"] =aux_function()[5]
                         var know_change = (Window_information["visual_width"]/2) - (Window_information["browser_width"]/2)
                         debug["checking device width"][1] ? console.log(Window_information["visual_width"]) : ""
                         if(know_change != $(".html_page").offset()["left"]){

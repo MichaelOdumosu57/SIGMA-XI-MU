@@ -19,11 +19,7 @@
 $(document).ready(function(){
 
 
-    // debugging API
-        {
-            debug["checking device width"][0] ? console.log(browser_window.outerWidth) : ""
-            debug["external objects"][0] ? console.log($("body > *")) : ""
-        }
+	console.log($("script"))
 
     //////////////////////////////////////////////////////////////////////////////////////////
     // it would make sense that the API makes the webpage  before it debuggs it

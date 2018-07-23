@@ -17,7 +17,7 @@ function BrowserCheck()
 
 	var M;
 	var O;
-	var browsing_object_keys = Object.keys(browsing_object).map(function(key){return browsing_object[key] ?  O = key : ""})
+	var browsing_object_keys = Object.keys(browsing_object).map(function(key){return browsing_object[key] ?  O = (key == 'IE' ? "Trident" : key) : ""})
 
 		var ua= navigator.userAgent
 	   // var N= navigator.appName, ua= navigator.userAgent, tem;
@@ -28,9 +28,10 @@ function BrowserCheck()
 	ua.split(" ").forEach(function(junk,i){
 		if(junk.indexOf(O) != -1){
 			M = junk.split("/")
+
 		}
 	})
-
+	M[0] == "Trident" ? M[0] = "IE" : ""
 
     return M;
 }
@@ -69,13 +70,13 @@ function BrowserCheck()
             //all related information about the viewport of the device
 
             var browser = [BrowserCheck()];
-            console.log(browser)
+
             //this will be an array, containing difference among browsers and their versions
 
             var Window_information = {"browser" : browser,
                                       "zoom_level" : window.devicePixelRatio,
                                     }
-           console.log(browser)
+
             var browser_window = window;
             if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
               browser_window = window.top;
@@ -89,7 +90,7 @@ function BrowserCheck()
                                          "visual_width":aux_function()[4],
                                          "visual_height":aux_function()[5]
                                         }
-                  console.log(browser)
+
 
 
             function aux_function(){
@@ -102,11 +103,11 @@ function BrowserCheck()
                 }
 
                 if(browser[0][0] == "IE" ){
-                    return [browser,window.devicePixelRatio, Window_information["zoom_level"]*  browser_window.outerWidth,  Window_information["zoom_level"]*  browser_window.outerHeight,browser_window.innerWidth, browser_window.innerWidth]
+                    return [browser,window.devicePixelRatio, Window_information["zoom_level"]*  browser_window.outerWidth,  Window_information["zoom_level"]*  browser_window.outerHeight,browser_window.innerWidth, browser_window.innerHeight]
                 }
 
                 if(browser[0][0] == "Edge" ){
-                    return [browser,window.devicePixelRatio,browser_window.outerWidth, browser_window.outerHeight,browser_window.visualViewport.width, browser_window.visualViewport.height]
+                    return [browser,window.devicePixelRatio,window.devicePixelRatio * browser_window.outerWidth,window.devicePixelRatio  * browser_window.outerHeight,browser_window.innerWidth, browser_window.innerHeight]
                 }
             }
             ///////////////////////////////////////////////////////////////////////

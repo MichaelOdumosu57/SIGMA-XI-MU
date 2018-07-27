@@ -661,7 +661,7 @@
                     
                     // page3 details
                         {
-                            var detail_information = ["Height","Weight"]
+                            var detail_information = ["Height","Weight","Color"]
                             var detail_css_prop;
                             var detail_css_val;
                             $(".interface").append("<div class = 'page3'></div>")
@@ -704,15 +704,17 @@
                                 
                             })
                             $.map($(".properties").adv_clone({
-                                items:2,
-                                debug: true
+                                items:3,
+                                debug: true,
+                                specifiers:[["color",3]]
                             }),function(properties,i){
                                 $(".properties div h3").eq(i).text(detail_information[i])
                             })
                             $(".page3").pretty_print({
                                 objects: $(".page3 .properties"),
-                                indent:"5em",
-                                x_spacing:"7em"
+                                indent:"3em",
+                                x_spacing:"6em",
+                                y_spacing:"-21em"
                                 
                             })
                             
@@ -760,13 +762,17 @@
                                             $.map($(".properties"),function(prop_val,i){
                                                 debug["interface object"][0] ? console.log($(".properties textarea").eq(i).val(),
                                                 $(".properties div h3").eq(i).text().toLowerCase()) : ""
-                                                var detail_css_prop = $(".properties div h3").eq(i).text().toLowerCase()
-                                                var detail_css_val = $(".properties textarea").eq(i).val()
+                                                detail_css_prop = $(".properties div h3").eq(i).text().toLowerCase()
+                                                detail_css_val = $(".properties textarea").eq(i).val()
+                                                 i == 2 ? detail_css_prop = "background-color": ""
+                                                    
+
                                                 $(".prototype").css(
                                                     detail_css_prop , detail_css_val
                                                 )
                                             })
-                                                
+                                            
+                                            $(".html_page .shapes").removeClass("glyphicon prototype").addClass("html_object")
                                             $(".page3:first ").css({
                                                 "margin-left":"-500px",
                                                 "opacity":"0"
@@ -783,7 +789,7 @@
                                     }
                                     if(interface_titles_counter == 1){
                                         
-
+                                        $(".page1 .shapes:first").removeClass("stay")
                                         $(".page1 .shapes").adv_clone(2)
                                         $(".page1 .shapes:first").addClass("stay")
                                         $(".page1 .shapes:last").addClass("prototype")
@@ -845,7 +851,7 @@
                 //make the object
                 // label the object
                 //  choose the design (this means additional design the user cannot envision or cstomer made design)
-                        // shapes that have problems
+                        // shapes that have problems and glyphicons
                             // trapezoid
                             // parallelogram
                             // octagon

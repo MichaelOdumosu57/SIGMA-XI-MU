@@ -1,3 +1,4 @@
 API can now tell if device is mobile or not
 User can choose array of custom shapes
 Can now create a basic shape with width and height
+is able to add shapes properly as requsted, so you use it add an object and use it again

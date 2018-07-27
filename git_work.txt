@@ -1,1 +1,2 @@
 API can now tell if device is mobile or not
+User can choose array of custom shapes

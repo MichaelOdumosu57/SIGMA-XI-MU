@@ -48,7 +48,7 @@
         "border": "3px solid rgb(227,227,227)"
     })
 
-    // setInterval(listening_zoom, .00001)
+    setInterval(listening_zoom, .00001)
         // the debugger object
             {
             $(".html_page").after("<div class ='debug'></div>")
@@ -214,8 +214,8 @@
                 if($("carousel-control").length <= 2){
                     $(".debug").append("<div class ='well topic'></div>" +
                 "<div class ='well booleans'></div>" +
-                '<a class="  carousel-control" role="button" data-slide="next" style="right: 0; left: auto;" ><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span><span class="sr-only" ></span></a>'+
-                '<a class="  carousel-control" role="button" data-slide="prev" ><span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span><span class="sr-only" ></span></a>')
+                '<a class="  carousel-control" role="button" data-slide="next" style="right: 0; left: auto;" ><span class="glyphicon glyphicon-chevron-right debug-right" aria-hidden="true" ></span><span class="sr-only" ></span></a>'+
+                '<a class="  carousel-control" role="button" data-slide="prev" ><span class="glyphicon glyphicon-chevron-left debug-left" aria-hidden="true" ></span><span class="sr-only" ></span></a>')
                 }
                 $(this).draggable()
                 $(".topic").css({
@@ -243,13 +243,13 @@
 
                 debug_executed = true;
 
-                $(".glyphicon-chevron-left").click(function(){
+                $(".debug-left").click(function(){
 
                     $(".topic h2").text(topic[changing_math(debug_counter,topic,"-")])
                     $(".booleans h2").text(booleans[debug_counter])
 
                 })
-                $(".glyphicon-chevron-right").click(function(){
+                $(".debug-right").click(function(){
 
                     $(".topic h2").text(topic[changing_math(debug_counter,topic,"+")])
                     $(".booleans h2").text(booleans[debug_counter])
@@ -306,11 +306,311 @@
         ///////////////////////////////////////////////////////////////
 
         // interface object
-        $(".debug").after("<div class = 'interface'></div>")
+            var inteface_properties = [
+                {
+                "background-color":"green",
+                "height":"5em",
+                "width":"7em",
+                "border-radius":"100px",
+                "left":"0",
+                "top": $(".html_page").css("height")
+                },
+                {
+                "background-color":"rgba(102, 235, 0, 0.3)",
+                "height":"40em",
+                "width":"60em",
+                "border-radius":"100px",
+                "top":"0"
+                }
+            ]
+            var interface_execute = false;
+            var interface_shapes = [
+                                    "square",
+                                    "rectangle",
+                                    "circle",
+                                    "oval",
+                                    "triangle-up",
+                                    "triangle-down",
+                                    "triangle-left",
+                                    "triangle-right",
+                                    "triangle-topleft",
+                                    "triangle-topright",
+                                    "triangle-bottomleft",
+                                    "triangle-bottomright",
+                                    "curvedarrow",
+                                    "trapezoid",
+                                    "star-six",
+                                    "star-five",
+                                    "pentagon",
+                                    "hexagon",
+                                    "octagon",
+                                    "heart",
+                                    "infinity",
+                                    "diamond",
+                                    "diamond-shield",
+                                    "diamond-narrow",
+                                    "cut-diamond",
+                                    "egg",
+                                    "pacman",
+                                    "talkbubble",
+                                    "burst-12",
+                                    "burst-8",
+                                    "yin-yang",
+                                    "badge-ribbon",
+                                    "space-invader",
+                                    "tv",
+                                    "chevron",
+                                    "magnifying-glass",
+                                    "facebook-icon",
+                                    "moon",
+                                    "flag",
+                                    "cone",
+                                    "cross",
+                                    "base",
+                                    "pointer",
+                                    "glyphicon-asterisk",
+                                    "glyphicon-plus",
+                                    "glyphicon-eur",
+                                    "glyphicon-euro",
+                                    "glyphicon-minus",
+                                    "glyphicon-cloud",
+                                    "glyphicon-envelope",
+                                    "glyphicon-pencil",
+                                    "glyphicon-glass",
+                                    "glyphicon-music",
+                                    "glyphicon-search",
+                                    "glyphicon-heart",
+                                    "glyphicon-star",
+                                    "glyphicon-star-empty",
+                                    "glyphicon-user",
+                                    "glyphicon-film",
+                                    "glyphicon-th-large",
+                                    "glyphicon-th",
+                                    "glyphicon-th-list",
+                                    "glyphicon-ok",
+                                    "glyphicon-zoom-in",
+                                    "glyphicon-zoom-out",
+                                    "glyphicon-off",
+                                    "glyphicon-cog",
+                                    "glyphicon-trash",
+                                    "glyphicon-home",
+                                    "glyphicon-file",
+                                    "glyphicon-time",
+                                    "glyphicon-road",
+                                    "glyphicon-download-alt",
+                                    "glyphicon-download",
+                                    "glyphicon-upload",
+                                    "glyphicon-inbox",
+                                    "glyphicon-play-circle",
+                                    "glyphicon-repeat",
+                                    "glyphicon-refresh",
+                                    "glyphicon-list-alt",
+                                    "glyphicon-lock",
+                                    "glyphicon-flag",
+                                    "glyphicon-headphones",
+                                    "glyphicon-volume-off",
+                                    "glyphicon-volume-down",
+                                    "glyphicon-volume-up",
+                                    "glyphicon-qrcode",
+                                    "glyphicon-barcode",
+                                    "glyphicon-tag",
+                                    "glyphicon-tags",
+                                    "glyphicon-book",
+                                    "glyphicon-bookmark",
+                                    "glyphicon-print",
+                                    "glyphicon-camera",
+                                    "glyphicon-font",
+                                    "glyphicon-bold",
+                                    "glyphicon-italic",
+                                    "glyphicon-text-height",
+                                    "glyphicon-text-width",
+                                    "glyphicon-align-left",
+                                    "glyphicon-align-center",
+                                    "glyphicon-align-right",
+                                    "glyphicon-align-justify",
+                                    "glyphicon-list",
+                                    "glyphicon-indent-left",
+                                    "glyphicon-indent-right",
+                                    "glyphicon-facetime-video",
+                                    "glyphicon-picture",
+                                    "glyphicon-map-marker",
+                                    "glyphicon-adjust",
+                                    "glyphicon-tint",
+                                    "glyphicon-edit",
+                                    "glyphicon-share",
+                                    "glyphicon-check",
+                                    "glyphicon-move",
+                                    "glyphicon-step-backward",
+                                    "glyphicon-fast-backward",
+                                    "glyphicon-backward",
+                                    "glyphicon-play",
+                                    "glyphicon-pause",
+                                    "glyphicon-stop",
+                                    "glyphicon-forward",
+                                    "glyphicon-fast-forward",
+                                    "glyphicon-step-forward",
+                                    "glyphicon-eject",
+                                    "glyphicon-chevron-left",
+                                    "glyphicon-chevron-right",
+                                    "glyphicon-plus-sign",
+                                    "glyphicon-minus-sign",
+                                    "glyphicon-remove-sign",
+                                    "glyphicon-ok-sign",
+                                    "glyphicon-question-sign",
+                                    "glyphicon-info-sign",
+                                    "glyphicon-screenshot",
+                                    "glyphicon-remove-circle",
+                                    "glyphicon-ok-circle",
+                                    "glyphicon-ban-circle",
+                                    "glyphicon-arrow-left",
+                                    "glyphicon-arrow-right",
+                                    "glyphicon-arrow-up",
+                                    "glyphicon-arrow-down",
+                                    "glyphicon-share-alt",
+                                    "glyphicon-resize-full",
+                                    "glyphicon-resize-small",
+                                    "glyphicon-exclamation-sign",
+                                    "glyphicon-gift",
+                                    "glyphicon-leaf",
+                                    "glyphicon-fire",
+                                    "glyphicon-eye-open",
+                                    "glyphicon-eye-close",
+                                    "glyphicon-warning-sign",
+                                    "glyphicon-plane",
+                                    "glyphicon-calendar",
+                                    "glyphicon-random",
+                                    "glyphicon-comment",
+                                    "glyphicon-magnet",
+                                    "glyphicon-chevron-up",
+                                    "glyphicon-chevron-down",
+                                    "glyphicon-retweet",
+                                    "glyphicon-shopping-cart",
+                                    "glyphicon-folder-close",
+                                    "glyphicon-folder-open",
+                                    "glyphicon-resize-vertical",
+                                    "glyphicon-resize-horizontal",
+                                    "glyphicon-hdd",
+                                    "glyphicon-bullhorn",
+                                    "glyphicon-bell",
+                                    "glyphicon-certificate",
+                                    "glyphicon-thumbs-up",
+                                    "glyphicon-thumbs-down",
+                                    "glyphicon-hand-right",
+                                    "glyphicon-hand-left",
+                                    "glyphicon-hand-up",
+                                    "glyphicon-hand-down",
+                                    "glyphicon-circle-arrow-right",
+                                    "glyphicon-circle-arrow-left",
+                                    "glyphicon-circle-arrow-up",
+                                    
+                                    ];
+            var interface_counter = 0;
+            var interface_counter_old = 0;
+            $(".debug").after("<div class = 'interface'></div>")
+            $(".interface").css(inteface_properties[0]).draggable()
+            $(".interface").click(function(){
+                if(interface_execute == true){
+                    return
+                }
+                interface_execute = true;
+                $(this).animate(inteface_properties[1],2000)
+                
+                // interface heading
+                    {
+                        $(this).append("<h1>User Interface</h1>")
+                        $(".interface > h1").css({
+                            "text-align":"center",
+                            "font-size":"5em",
+                            "background-color":"white"
+                        })
+                    }
+                //////////////////////////////////////////////////////////
+                //
+                //////////////////////////////////////////////////////////
+                
+                // interface body
+                {
+                    
+                        $(".interface").append("<h2> Make the object</h2><div></div><div></div> "+
+                     '<a class="  carousel-control" role="button" data-slide="next" style="right: 0; left: auto;" ><span class="glyphicon glyphicon-chevron-right interface-right interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>'+
+                    '<a class="  carousel-control" role="button" data-slide="prev" ><span class=" glyphicon glyphicon-chevron-left  interface-left interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>')
+                        
+
+                        $(".interface > h2").css({
+                            "text-align":"center",
+                        })
+                        $(".interface > div").eq(1).css({
+                            "height":inteface_properties[1].height,
+                            "width":  inteface_properties[1].width,
+                        })
+                        $(".interface > div:first").css({
+                            "height": .3 * numberParse($(".interface > div").eq(1).css("width")),
+                            "width":  1.1 * numberParse($(".interface > div").eq(1).css("height")),
+                            "background-color":"white",
+                            "position":"absolute",
+                            "margin-left":"8em"
+                            
+                        }).append("<div></div>")
+                        $(".interface > div > div").css({
+                            "margin-left": .4 * numberParse($(".interface > div:first").css("width")),
+                            "margin-top": .3 * numberParse($(".interface > div:first").css("height"))
+                        }).addClass("shapes glyphicon ").attr("id",interface_shapes[interface_counter])
+                        
+                        $(".interface-left").click(function(event){
+                            interface_counter_old = interface_counter
+                            interface_counter = changing_math(interface_counter,interface_shapes,"-")
+                            debug["interface object"][0] ? console.log(interface_shapes[interface_counter]) : ""
+                            if(interface_shapes[interface_counter].indexOf("glyphicon") != -1){
+                                debug["interface object"][0] ? console.log("true") : ""
+                                $(".interface > div > div").addClass(interface_shapes[interface_counter]).removeClass(interface_shapes[interface_counter+1]).attr("id","")
+                            }
+                            else{
+                                $(".interface > div > div").attr("id",interface_shapes[interface_counter]).removeClass(interface_shapes[interface_counter_old])
+                            }
+                        })
+
+                        $(".interface-right").click(function(event){
+                            interface_counter_old = interface_counter
+                            interface_counter = changing_math(interface_counter,interface_shapes,"+")
+                            debug["interface object"][0] ? console.log(interface_shapes[interface_counter]) : ""
+                            if(interface_shapes[interface_counter].indexOf("glyphicon") != -1){
+                                debug["interface object"][0] ? console.log("true") : ""
+                                $(".interface > div > div").addClass(interface_shapes[interface_counter]).removeClass(interface_shapes[interface_counter -1]).attr("id","")
+                            }
+                            else{
+                                $(".interface > div > div").attr("id",interface_shapes[interface_counter])
+                                $(".interface > div > div").removeClass(interface_shapes[interface_counter_old])
+                            }
+                        })
+                        
+                        
+                }
+                //////////////////////////////////////////////////////////
+                //make the object
+                        // shapes that have problems
+                            // trapezoid
+                            // parallelogram
+                            // octagon
+                            // infinity
+                            // cut-diamond
+                            // yin-yang
+                            // facebook icon
+                // label the object
+                //  choose the design (this means additional design the user cannot envision or cstomer made design)
+                //////////////////////////////////////////////////////////
+                    
+            })
+            
+            
+        
         ///////////////////////////////////////////////////////////////
         //the interface object here is what will really redefine how we builid websites
         //  it will be a lot faster, a lot more efficient and people will be able to build websites with this app
         //  this interface should be ergonomic and granular, making the user feel like a programmer when maintaing their website
+        //  inteface_properties is the array that will change the interface object when its time to change
+        //  interface_execute helps the interface object know when to display or not
+        //  var interface_shapes contains a list off all the shapes made in css, since chrome has made them inaccessible through javascript
+        //  var interface_counter_shapes helps the first part of the interface object scroll through different shapes
         ///////////////////////////////////////////////////////////////
 
         // external objects
@@ -353,6 +653,10 @@
     // in firefox window the outerwidth is not the same find a way around this
     ////////////////////////////////////////////////////////////////////
 
-
+    // test objects ill deal with this when I find necessary
+    $(".interface").trigger("click")
+    ////////////////////////////////////////////////////////////////////
+    //
+    ////////////////////////////////////////////////////////////////////
 
 })

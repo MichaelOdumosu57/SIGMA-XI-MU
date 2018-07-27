@@ -99,7 +99,7 @@ function BrowserCheck()
             function aux_function(){
 
                 if(navigator.userAgent.match(/(iPad|iPhone|Android)/i) != null){
-                    console.log("where are those scripts coming from")
+                    
                         return [
                             browser,
                             window.devicePixelRatio,

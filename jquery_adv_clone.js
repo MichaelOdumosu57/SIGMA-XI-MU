@@ -148,7 +148,7 @@ var call = 0;
 
 
 
-                if(call == 1 ){
+                if(call ==1  ){
                     $(this.selector + ":first").remove()
                     michael.debug ? console.log(call) : ""
                     call = 0;

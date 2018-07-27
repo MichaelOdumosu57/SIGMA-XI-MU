@@ -322,7 +322,7 @@
                 "border-radius":"100px",
                 "top":"0"
                 }
-            ]
+            ];
             var interface_execute = false;
             var interface_shapes = [
                                     "square",
@@ -504,8 +504,11 @@
                                     "glyphicon-circle-arrow-up",
                                     
                                     ];
-            var interface_counter = 0;
+            var interface_counter = 3;
             var interface_counter_old = 0;
+            var interface_titles = ["Make the object","Type & Amount","Design the Object"]
+            var interface_titles_counter = 0;
+            var interface_amount = 0
             $(".debug").after("<div class = 'interface'></div>")
             $(".interface").css(inteface_properties[0]).draggable()
             $(".interface").click(function(){
@@ -513,7 +516,7 @@
                     return
                 }
                 interface_execute = true;
-                $(this).animate(inteface_properties[1],2000)
+                $(this).css(inteface_properties[1],2000)
                 
                 // interface heading
                     {
@@ -531,13 +534,18 @@
                 // interface body
                 {
                     
-                        $(".interface").append("<h2> Make the object</h2><div></div><div></div> "+
-                     '<a class="  carousel-control" role="button" data-slide="next" style="right: 0; left: auto;" ><span class="glyphicon glyphicon-chevron-right interface-right interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>'+
-                    '<a class="  carousel-control" role="button" data-slide="prev" ><span class=" glyphicon glyphicon-chevron-left  interface-left interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>')
-                        
+                    // page1
+                    {
 
+                        $(".interface").append("<h2> "+interface_titles[0] +"</h2><div class = 'page1'></div><div class = 'page1'></div> "+
+                     '<a class="  carousel-control page1 " role="button" data-slide="next" style="right: 0; left: auto;" ><span class="glyphicon glyphicon-chevron-right interface-right interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>'+
+                    '<a class="  carousel-control page1" role="button" data-slide="prev" ><span class=" glyphicon glyphicon-chevron-left  interface-left interface_glyph" aria-hidden="true" ></span><span class="sr-only" ></span></a>')
                         $(".interface > h2").css({
                             "text-align":"center",
+                        })
+                        
+                        $(".interface > h2").css({
+                            "background-color":"yellow"
                         })
                         $(".interface > div").eq(1).css({
                             "height":inteface_properties[1].height,
@@ -556,6 +564,7 @@
                             "margin-top": .3 * numberParse($(".interface > div:first").css("height"))
                         }).addClass("shapes glyphicon ").attr("id",interface_shapes[interface_counter])
                         
+                        
                         $(".interface-left").click(function(event){
                             interface_counter_old = interface_counter
                             interface_counter = changing_math(interface_counter,interface_shapes,"-")
@@ -568,7 +577,6 @@
                                 $(".interface > div > div").attr("id",interface_shapes[interface_counter]).removeClass(interface_shapes[interface_counter_old])
                             }
                         })
-
                         $(".interface-right").click(function(event){
                             interface_counter_old = interface_counter
                             interface_counter = changing_math(interface_counter,interface_shapes,"+")
@@ -582,11 +590,261 @@
                                 $(".interface > div > div").removeClass(interface_shapes[interface_counter_old])
                             }
                         })
+
+                    }
+                    //////////////////////////////////////////////////////////
+                    // will use an array to understand how we will make the object
+                    //////////////////////////////////////////////////////////
+                    
+                    // page2
+                    
+                    // helper function
+                    var type_and_arguments_counter = 0;
+                    var type_and_arguments_definition = "";
+                        function type_and_arguments(){
+                            
+                            interface_shapes.forEach(function(shape,i){
+                                if($(".page2 textarea").eq(0).val() == shape ){
+                                    debug["interface object"][2] ? console.log(shape) : ""
+                                }
+                            })
+                            
+                            $(".page2 textarea").eq(1).val().split("").forEach(function(char,i){
+                                debug["interface object"][0] ? console.log(isNaN(char)) : ""
+                                if(isNaN(char)){
+                                     type_and_arguments_counter +=1
+                                     
+                                }
+ 
+                            })
+                            if(type_and_arguments_counter >= 1){
+                                alert("Please enter a whole number")
+                                type_and_arguments_counter = 0
+                                return 1
+                            }
+                            return 2
+                            interface_amount = parseInt($(".page2 textarea").eq(1).val())
+                            
+                        }
+                    //////////////////////////////////////////////////////////
+                    // this function helps the interface object know how to make the proper amount and type of clones
+                    // var type_and_arguments_counter  if this is > 0 that means the function found the amount was  not a string
+                    //////////////////////////////////////////////////////////
+                    
+                    {
+                        $(".interface").append("<div class = 'page2'><h3>Label: this is a </h3><textarea type='text' class = 'form-control'></textarea>" +
+                        "<h3>Amount </h3><textarea type='text' class = 'form-control'></textarea></div>")
+                        $(".page2").css({
+                            "height": .3 * numberParse($(".interface > div").eq(1).css("width")),
+                            "width":  1.1 * numberParse($(".interface > div").eq(1).css("height")),
+                            "position":"absolute",
+                            "margin-left":"-500px",
+                            "opacity":"0"
+                            
+                        })
+                        $(".page2 h3").css({
+                            "background-color":"yellow",
+                            "text-align":"center",
+                            
+                        })
+                        $(".page2 textarea").css({
+                            "text-align":"center",
+                            "font-size":'14px'
+                        })
                         
+                        $(".page2 textarea").eq(1).val()
+                        
+                    }
+                    //////////////////////////////////////////////////////////
+                    // var interface_amount, lets the interface know how many clones to make
+                    //////////////////////////////////////////////////////////
+                    
+                    // page3 details
+                        {
+                            var detail_information = ["Height","Weight"]
+                            var detail_css_prop;
+                            var detail_css_val;
+                            $(".interface").append("<div class = 'page3'></div>")
+                            $(".page3").css({
+                                "background-color":"blue",
+                                "height":.55 * numberParse($(".interface").css("height")),
+                                "width":.9 *numberParse($(".interface").css("width")),
+                                "margin-left":"-500px",
+                                "opacity":"0",
+                                "border":"3px solid black",
+                                "position":"absolute"
+                            }).append("<div class = 'page3 properties'> "+
+                            "<div><h3></h3><div>" +
+                            "<textarea class ='form-control'></textarea>" +
+                            
+                            "</div>")
+                            
+                            $(".page3 .properties").css({
+                                "background-color":"white",
+                                "height": .4 * numberParse($(".page3:first").css("height")),
+                                "width": .25 * numberParse($(".page3:first").css("width")),
+                                "border":"3px solid black",
+                                "margin-top":"1em"
+                            })
+                            
+                            $(".page3 .properties div").eq(0).css({
+                                "background-color" :"yellow",
+                                "height":.25 * numberParse($(".page3 .properties").css("height")),
+                                "width":.4 * numberParse($(".page3 .properties").css("width")),
+                                "margin":"auto",
+                                "margin-top":"-1em"
+                            })
+                            $(".page3 .properties div h3").text(detail_information[0]).css({
+                                "text-align":"center"
+                            })
+                            $(".page3 .properties textarea").css({
+                                "text-align":"center",
+                                "font-size":"27px",
+                                "height":.5 * numberParse($(".page3 .properties").css("height"))
+                                
+                            })
+                            $.map($(".properties").adv_clone({
+                                items:2,
+                                debug: true
+                            }),function(properties,i){
+                                $(".properties div h3").eq(i).text(detail_information[i])
+                            })
+                            $(".page3").pretty_print({
+                                objects: $(".page3 .properties"),
+                                indent:"5em",
+                                x_spacing:"7em"
+                                
+                            })
+                            
+                        }
+                    //////////////////////////////////////////////////////////
+                    // we need the box to hold relevant details,
+                    // var detail_css_prop these help the click object know which variable to use
+                    // var detail_css_val;
+                    //////////////////////////////////////////////////////////
+                        // prev and nxt buttons to move through the interface
+                            {
+                                $(".interface").append("<ul class = 'pager'>"+
+                                "<li class = 'previous'>"+
+                                "<a>Previous</a>" +
+                                "</li>" +
+                                "<li class = 'next'>" +
+                                "<a>Next</a>" +
+                                "</li>"
+                                )
+                                
+                                $(".interface ul").css({
+                                    
+                                    "margin-top":"-15em",
+                                    "z-index":"5"
+                                })
+                                
+                                
+                                $(".interface ul a:first").css({
+                                    "margin-left":"10em"
+                                })
+                                
+                                $(".interface ul a:last").css({
+                                    "margin-left":"10em",
+                                    "float":"none"
+                                })
+                                
+                                $(".interface ul a:first").click(function(event){
+                                    
+                                })
+
+                                $(".interface ul a:last").click(function(event){
+                                    interface_titles_counter = changing_math(interface_titles_counter,interface_titles,"+")
+                                    debug["interface object"][2] ? console.log(interface_titles_counter) : ""
+                                    if(interface_titles_counter == 0){
+                                            $.map($(".properties"),function(prop_val,i){
+                                                debug["interface object"][0] ? console.log($(".properties textarea").eq(i).val(),
+                                                $(".properties div h3").eq(i).text().toLowerCase()) : ""
+                                                var detail_css_prop = $(".properties div h3").eq(i).text().toLowerCase()
+                                                var detail_css_val = $(".properties textarea").eq(i).val()
+                                                $(".prototype").css(
+                                                    detail_css_prop , detail_css_val
+                                                )
+                                            })
+                                                
+                                            $(".page3:first ").css({
+                                                "margin-left":"-500px",
+                                                "opacity":"0"
+                                            })
+                                            $(".page1:first").css({
+                                                "margin-left":"8em",
+                                                "opacity":"1"
+                                            })
+                                            
+                                            $(".page1:not(:first)").css({
+                                                "margin-left":"0px",
+                                                "opacity":"1"
+                                            })
+                                    }
+                                    if(interface_titles_counter == 1){
+                                        
+
+                                        $(".page1 .shapes").adv_clone(2)
+                                        $(".page1 .shapes:first").addClass("stay")
+                                        $(".page1 .shapes:last").addClass("prototype")
+                                        $(".html_page").append($(".page1 .shapes:not('.stay')"))
+                                        $(".prototype").css({
+                                            "background-color":"blue"
+                                        })
+                                        debug["interface object"][0] ? console.log($(".page1 .shapes")) : ""
+                                        $(".page1 ").css({
+                                            "margin-left":"-500px",
+                                            "opacity":"0"
+                                        })
+                                        $(".page2").css({
+                                            "margin-left":"8em",
+                                            "margin-top":"-40em",
+                                            "opacity":"1"
+                                        })
+                                        // alert("If you leave empty it will be assumed you only want one clone")
+                                    }
+                                    if(interface_titles_counter == 2){
+                                        
+                                        if(type_and_arguments() ==1){
+                                            debug["interface object"][0] ? console.log("interface object knows") : ""
+                                            interface_titles_counter = 1;
+                                        }
+                                        else{
+                                            debug["interface object"][0] ? console.log($(".page2 textarea").eq(0).val(),$(".page2 textarea").eq(1).val()) : ""
+                                            $(".page2 textarea").eq(0).val() != "" ? $(".prototype").addClass("user-" + $(".page2 textarea").eq(0).val()) : ""
+                                            $(".prototype").adv_clone(parseInt($(".page2 textarea").eq(1).val()))
+                                            $(".page2 ").css({
+                                            "margin-left":"-500px",
+                                            "opacity":"0"
+                                        })
+                                            $(".page3:first").css({
+                                                "margin-left":"3em",
+                                                "margin-top":"-40em",
+                                                "opacity":"1"
+                                            })
+                                        }
+                                    }
+                                    $(".interface > h2:first").text(interface_titles[interface_titles_counter])
+
+                                })
+                                
+                            }
+                        //////////////////////////////////////////////////////////
+                        // for the first part we need to send a shape into the html page
+                        //  for the secound part, we need multiple the amount needed and save it as a custom
+                        // item in case she wants to use it later
+                        // for the 3rd part the prototypes have to be responsive
+                        //////////////////////////////////////////////////////////
+                        $(".interface > div >div").click(function(event){
+                            debug["interface object"][2] ? console.log("label and amount") : ""
+                            // $(".interface > div").hide()
+                        })
                         
                 }
                 //////////////////////////////////////////////////////////
                 //make the object
+                // label the object
+                //  choose the design (this means additional design the user cannot envision or cstomer made design)
                         // shapes that have problems
                             // trapezoid
                             // parallelogram
@@ -595,8 +853,6 @@
                             // cut-diamond
                             // yin-yang
                             // facebook icon
-                // label the object
-                //  choose the design (this means additional design the user cannot envision or cstomer made design)
                 //////////////////////////////////////////////////////////
                     
             })
@@ -611,6 +867,8 @@
         //  interface_execute helps the interface object know when to display or not
         //  var interface_shapes contains a list off all the shapes made in css, since chrome has made them inaccessible through javascript
         //  var interface_counter_shapes helps the first part of the interface object scroll through different shapes
+        // var interface_titles is used the help the user understand what page they are on
+        // var interface_titles_counter helps the API  know what counter to show the interface sub title
         ///////////////////////////////////////////////////////////////
 
         // external objects
@@ -655,6 +913,8 @@
 
     // test objects ill deal with this when I find necessary
     $(".interface").trigger("click")
+    // $(".interface ul a:last").trigger("click")
+    // $(".interface ul a:last").trigger("click")
     ////////////////////////////////////////////////////////////////////
     //
     ////////////////////////////////////////////////////////////////////

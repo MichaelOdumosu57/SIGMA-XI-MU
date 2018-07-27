@@ -29,9 +29,9 @@ function BrowserCheck()
 		if(junk.indexOf(O) != -1){
 			M = junk.split("/")
 
+	    M[0] == "Trident" ? M[0] = "IE" : ""
 		}
 	})
-	M[0] == "Trident" ? M[0] = "IE" : ""
 
     return M;
 }
@@ -39,7 +39,7 @@ function BrowserCheck()
 
 
 // Opera 8.0+
-//var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+//var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
 // Firefox 1.0+
 //var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -78,9 +78,12 @@ function BrowserCheck()
                                     }
 
             var browser_window = window;
-            if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
-              browser_window = window.top;
-
+            
+            if(browser[0] != undefined){
+                if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
+                  browser_window = window.top;
+    
+                }
             }
 
                  Window_information = {"browser" : browser,
@@ -94,24 +97,69 @@ function BrowserCheck()
 
 
             function aux_function(){
-                if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
-                    return [browser,window.devicePixelRatio, Window_information["zoom_level"]*  browser_window.outerWidth,  Window_information["zoom_level"]*  browser_window.outerHeight,browser_window.screen.availWidth, browser_window.screen.availHeight]
-                }
 
-                if(browser[0][0] == "Chrome" ){
-                    return [browser,window.devicePixelRatio,browser_window.outerWidth, browser_window.outerHeight,browser_window.visualViewport.width, browser_window.visualViewport.height]
-                }
+                if(navigator.userAgent.match(/(iPad|iPhone|Android)/i) != null){
+                    console.log("where are those scripts coming from")
+                        return [
+                            browser,
+                            window.devicePixelRatio,
+                            browser_window.outerWidth,
+                            browser_window.outerHeight,
+                            browser_window.visualViewport.width,
+                            browser_window.visualViewport.height
+                            ]
 
-                if(browser[0][0] == "IE" ){
-                    return [browser,window.devicePixelRatio, Window_information["zoom_level"]*  browser_window.outerWidth,  Window_information["zoom_level"]*  browser_window.outerHeight,browser_window.innerWidth, browser_window.innerHeight]
                 }
+                
+                else{
+                    if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
+                        return [
+                            browser,
+                            window.devicePixelRatio,
+                            Window_information["zoom_level"]*  browser_window.outerWidth,
+                            Window_information["zoom_level"]*  browser_window.outerHeight,
+                            browser_window.screen.availWidth,
+                            browser_window.screen.availHeight]
+                    }
+    
+                    if(browser[0][0] == "Chrome" ){
+                        return [
+                            browser,
+                            window.devicePixelRatio,
+                            browser_window.outerWidth,
+                            browser_window.outerHeight,
+                            browser_window.visualViewport.width,
+                            browser_window.visualViewport.height
+                            ]
+                    }
+    
+                    if(browser[0][0] == "IE" ){
+                        return [
+                            browser,
+                            window.devicePixelRatio,
+                            Window_information["zoom_level"]*  browser_window.outerWidth,
+                            Window_information["zoom_level"]*  browser_window.outerHeight,
+                            browser_window.innerWidth,
+                            browser_window.innerHeight]
+                    }
+    
+                    if(browser[0][0] == "Edge" ){
+                        return [
+                            browser,
+                            window.devicePixelRatio,
+                            window.devicePixelRatio * browser_window.outerWidth,
+                            window.devicePixelRatio  * browser_window.outerHeight,
+                            browser_window.innerWidth,
+                            browser_window.innerHeight
+                            ]
+                    }
 
-                if(browser[0][0] == "Edge" ){
-                    return [browser,window.devicePixelRatio,window.devicePixelRatio * browser_window.outerWidth,window.devicePixelRatio  * browser_window.outerHeight,browser_window.innerWidth, browser_window.innerHeight]
                 }
+                
             }
             ///////////////////////////////////////////////////////////////////////
             // helps our window object fill its dynamic purposes
+            //  if our device is not a computer the API has to listen for its dimensions, there are just too many phones out there, dedicate a section in the ready method for this
             ///////////////////////////////////////////////////////////////////////
             $(document).ready(function() {
                 console.log( $("meta").attr("content"))

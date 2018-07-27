@@ -1,0 +1,1 @@
+API can now tell if device is mobile or not

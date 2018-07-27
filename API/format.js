@@ -40,7 +40,7 @@
 
      //the html container
      {
-
+    
     $(".html_page").length > 0 ?  true : $("body").append("<div class = 'html_page'></div>")
     $(".html_page").css({
         "width":  Window_information["browser_width"],
@@ -48,7 +48,7 @@
         "border": "3px solid rgb(227,227,227)"
     })
 
-    setInterval(listening_zoom, .00001)
+    // setInterval(listening_zoom, .00001)
         // the debugger object
             {
             $(".html_page").after("<div class ='debug'></div>")
@@ -300,9 +300,17 @@
 
 
         // test object
-        $(".debug").css(debug_properties[0]).after("<h1 style = 'font-size:5em; color:blue'> Testing text</h1>")
+        // $(".debug").css(debug_properties[0]).after("<h1 style = 'font-size:5em; color:blue'> Testing text</h1>")
         ///////////////////////////////////////////////////////////////
         // an idea for the test object it should be mainly reloading the page
+        ///////////////////////////////////////////////////////////////
+
+        // interface object
+        $(".debug").after("<div class = 'interface'></div>")
+        ///////////////////////////////////////////////////////////////
+        //the interface object here is what will really redefine how we builid websites
+        //  it will be a lot faster, a lot more efficient and people will be able to build websites with this app
+        //  this interface should be ergonomic and granular, making the user feel like a programmer when maintaing their website
         ///////////////////////////////////////////////////////////////
 
         // external objects

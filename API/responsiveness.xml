@@ -30,4 +30,16 @@
         <MD>false</MD>
         <LG>true</LG>
     </debugger>
+    <interface>
+      <recoloring>
+        <Google>true</Google>
+        <Firefox>true</Firefox>
+        <IE>false</IE>
+        <Edge>false</Edge>
+        <XS>false</XS>
+        <SM>false</SM>
+        <MD>false</MD>
+        <LG>true</LG>
+      </recoloring>
+    </interface>
 </table>

@@ -78,11 +78,11 @@ function BrowserCheck()
                                     }
 
             var browser_window = window;
-            
+
             if(browser[0] != undefined){
                 if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
                   browser_window = window.top;
-    
+
                 }
             }
 
@@ -91,7 +91,8 @@ function BrowserCheck()
                                          "browser_width" : aux_function()[2],
                                          "browser_height" : aux_function()[3],
                                          "visual_width":aux_function()[4],
-                                         "visual_height":aux_function()[5]
+                                         "visual_height":aux_function()[5],
+                                         "psuedo": aux_function()[6]
                                         }
 
 
@@ -99,18 +100,19 @@ function BrowserCheck()
             function aux_function(){
 
                 if(navigator.userAgent.match(/(iPad|iPhone|Android)/i) != null){
-                    
+
                         return [
                             browser,
                             window.devicePixelRatio,
                             browser_window.outerWidth,
                             browser_window.outerHeight,
                             browser_window.visualViewport.width,
-                            browser_window.visualViewport.height
+                            browser_window.visualViewport.height,
+                            ['','before','after']
                             ]
 
                 }
-                
+
                 else{
                     if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
                         return [
@@ -119,9 +121,11 @@ function BrowserCheck()
                             Window_information["zoom_level"]*  browser_window.outerWidth,
                             Window_information["zoom_level"]*  browser_window.outerHeight,
                             browser_window.screen.availWidth,
-                            browser_window.screen.availHeight]
+                            browser_window.screen.availHeight,
+                            ['',':before',':after']
+                            ]
                     }
-    
+
                     if(browser[0][0] == "Chrome" ){
                         return [
                             browser,
@@ -129,10 +133,11 @@ function BrowserCheck()
                             browser_window.outerWidth,
                             browser_window.outerHeight,
                             browser_window.visualViewport.width,
-                            browser_window.visualViewport.height
+                            browser_window.visualViewport.height,
+                            ['','before','after']
                             ]
                     }
-    
+
                     if(browser[0][0] == "IE" ){
                         return [
                             browser,
@@ -140,9 +145,11 @@ function BrowserCheck()
                             Window_information["zoom_level"]*  browser_window.outerWidth,
                             Window_information["zoom_level"]*  browser_window.outerHeight,
                             browser_window.innerWidth,
-                            browser_window.innerHeight]
+                            browser_window.innerHeight,
+                            ['','before','after']
+                          ]
                     }
-    
+
                     if(browser[0][0] == "Edge" ){
                         return [
                             browser,
@@ -150,12 +157,13 @@ function BrowserCheck()
                             window.devicePixelRatio * browser_window.outerWidth,
                             window.devicePixelRatio  * browser_window.outerHeight,
                             browser_window.innerWidth,
-                            browser_window.innerHeight
+                            browser_window.innerHeight,
+                            ['','before','after']
                             ]
                     }
 
                 }
-                
+
             }
             ///////////////////////////////////////////////////////////////////////
             // helps our window object fill its dynamic purposes

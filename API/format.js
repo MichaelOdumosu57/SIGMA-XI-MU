@@ -40,7 +40,7 @@
 
      //the html container
      {
-    
+
     $(".html_page").length > 0 ?  true : $("body").append("<div class = 'html_page'></div>")
     $(".html_page").css({
         "width":  Window_information["browser_width"],
@@ -502,7 +502,7 @@
                                     "glyphicon-circle-arrow-right",
                                     "glyphicon-circle-arrow-left",
                                     "glyphicon-circle-arrow-up",
-                                    
+
                                     ];
             var interface_counter = 14;
             var interface_counter_old = 0;
@@ -530,7 +530,7 @@
                 }
                 interface_execute = true;
                 $(this).css(inteface_properties[1],2000)
-                
+
                 // interface heading
                     {
                         $(this).append("<h1>User Interface</h1>")
@@ -543,10 +543,10 @@
                 //////////////////////////////////////////////////////////
                 //
                 //////////////////////////////////////////////////////////
-                
+
                 // interface body
                 {
- 
+
                     //helper function
                     {
                         function getStyleByQuery(id) {
@@ -554,14 +554,14 @@
                         }
                         function getAllStyles(elem) {
                             if (!elem) return []; // Element does not exist, empty list.
-                            var win = document.defaultView || window, style, styleNode = [], psuedo = ['','before','after'];
+                            var win = document.defaultView || window, style, styleNode = [], psuedo = Window_information["psuedo"];
                             if (win.getComputedStyle) { /* Modern browsers */
                                 psuedo.forEach(function(ps,i){
                                     style = win.getComputedStyle(elem, ps);
                                     for (var i=0; i<style.length; i++) {
-                                        styleNode.push( style[i] + ':' + style.getPropertyValue(style[i]) + ":" +( ps == '' ? "norm" : ps));
+                                        styleNode.push( style[i] + ':' + style.getPropertyValue(style[i]) + ":" +( ps == '' ? "norm" : ps.indexOf(":") == -1 ? ps : ps.split(":")[1]  ));
                                         //               ^name ^           ^ value ^
-                                        
+
                                     }
                                 })
                             } else if (elem.currentStyle) { /* IE */
@@ -576,14 +576,14 @@
                                 }
                             }
                             return styleNode;
-                        
-                            
+
+
                         }
                     }
                     //////////////////////////////////////////////////////////
                     //
                     //////////////////////////////////////////////////////////
-                    
+
                     // page1
                     {
 
@@ -593,7 +593,7 @@
                         $(".interface > h2").css({
                             "text-align":"center",
                         })
-                        
+
                         $(".interface > h2").css({
                             "background-color":"yellow"
                         })
@@ -607,14 +607,14 @@
                             "background-color":"white",
                             "position":"absolute",
                             "margin-left":"8em"
-                            
+
                         }).append("<div></div>")
                         $(".interface > div > div").css({
                             "margin-left": .4 * numberParse($(".interface > div:first").css("width")),
                             "margin-top": .3 * numberParse($(".interface > div:first").css("height"))
                         }).addClass("shapes glyphicon ").attr("id",interface_shapes[interface_counter])
-                        
-                        
+
+
                         $(".interface-left").click(function(event){
                             interface_counter_old = interface_counter
                             interface_counter = changing_math(interface_counter,interface_shapes,"-")
@@ -645,42 +645,42 @@
                     //////////////////////////////////////////////////////////
                     // will use an array to understand how we will make the object
                     //////////////////////////////////////////////////////////
-                    
+
                     // page2
-                    
+
                     // helper function
                     var type_and_arguments_counter = 0;
                     var type_and_arguments_definition = "";
                         function type_and_arguments(){
-                            
+
                             interface_shapes.forEach(function(shape,i){
                                 if($(".page2 textarea").eq(0).val() == shape ){
                                     debug["interface object"][2] ? console.log(shape) : ""
                                 }
                             })
-                            
+
                             $(".page2 textarea").eq(1).val().split("").forEach(function(char,i){
                                 debug["interface object"][0] ? console.log(isNaN(char)) : ""
                                 if(isNaN(char)){
                                      type_and_arguments_counter +=1
-                                     
+
                                 }
- 
+
                             })
                             if(type_and_arguments_counter >= 1){
                                 alert("Please enter a whole number")
                                 type_and_arguments_counter = 0
                                 return 1
                             }
-                            return 2
                             interface_amount = parseInt($(".page2 textarea").eq(1).val())
-                            
+                            return 2
+
                         }
                     //////////////////////////////////////////////////////////
                     // this function helps the interface object know how to make the proper amount and type of clones
                     // var type_and_arguments_counter  if this is > 0 that means the function found the amount was  not a string
                     //////////////////////////////////////////////////////////
-                    
+
                     {
                         $(".interface").append("<div class = 'page2'><h3>Label: this is a </h3><textarea type='text' class = 'form-control'></textarea>" +
                         "<h3>Amount </h3><textarea type='text' class = 'form-control'></textarea></div>")
@@ -690,25 +690,25 @@
                             "position":"absolute",
                             "margin-left":"-500px",
                             "opacity":"0"
-                            
+
                         })
                         $(".page2 h3").css({
                             "background-color":"yellow",
                             "text-align":"center",
-                            
+
                         })
                         $(".page2 textarea").css({
                             "text-align":"center",
                             "font-size":'14px'
                         })
-                        
+
                         $(".page2 textarea").eq(1).val()
-                        
+
                     }
                     //////////////////////////////////////////////////////////
                     // var interface_amount, lets the interface know how many clones to make
                     //////////////////////////////////////////////////////////
-                    
+
                     // page3 details
                         {
                             var detail_information = ["Height","Width","Color"]
@@ -726,9 +726,9 @@
                             }).append("<div class = 'page3 properties'> "+
                             "<div><h3></h3><div>" +
                             "<textarea class ='form-control'></textarea>" +
-                            
+
                             "</div>")
-                            
+
                             $(".page3 .properties").css({
                                 "background-color":"white",
                                 "height": .4 * numberParse($(".page3:first").css("height")),
@@ -736,7 +736,7 @@
                                 "border":"3px solid black",
                                 "margin-top":"1em"
                             })
-                            
+
                             $(".page3 .properties div").eq(0).css({
                                 "background-color" :"yellow",
                                 "height":.25 * numberParse($(".page3 .properties").css("height")),
@@ -751,7 +751,7 @@
                                 "text-align":"center",
                                 "font-size":"27px",
                                 "height":.5 * numberParse($(".page3 .properties").css("height"))
-                                
+
                             })
                             $.map($(".properties").adv_clone({
                                 items:3,
@@ -765,9 +765,9 @@
                                 indent:"3em",
                                 x_spacing:"6em",
                                 y_spacing:"-21em"
-                                
+
                             })
-                            
+
                         }
                     //////////////////////////////////////////////////////////
                     // we need the box to hold relevant details,
@@ -784,7 +784,7 @@
                                         }
                                         if(css_rule.indexOf(interface_color_choice) != -1){
                                             interface_css_replace["color"] = "rgb(255, 0, 0)"
-                                            
+
                                             debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
                                         }
                                         return  css_rule.split(":")[0] + ":" + interface_css_replace["color"]  + ";"
@@ -792,7 +792,7 @@
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 //this function helps the css query algorightm fix the specifc difference that are appering wrong in the html_page
                                 ////////////////////////////////////////////////////////////////////////////////////////
-                                    
+
                                 $(".interface").append("<ul class = 'pager'>"+
                                 "<li class = 'previous'>"+
                                 "<a>Previous</a>" +
@@ -801,32 +801,32 @@
                                 "<a>Next</a>" +
                                 "</li>"
                                 )
-                                
+
                                 $(".interface ul").css({
-                                    
+
                                     "margin-top":"-15em",
                                     "z-index":"5"
                                 })
-                                
-                                
+
+
                                 $(".interface ul a:first").css({
                                     "margin-left":"10em"
                                 })
-                                
+
                                 $(".interface ul a:last").css({
                                     "margin-left":"10em",
                                     "float":"none"
                                 })
-                                
+
                                 $(".interface ul a:first").click(function(event){
-                                    
+
                                 })
 
                                 $(".interface ul a:last").click(function(event){
                                     interface_titles_counter = changing_math(interface_titles_counter,interface_titles,"+")
                                     debug["interface object"][2] ? console.log(interface_titles_counter) : ""
                                     if(interface_titles_counter == 0){
-                                            
+
 
                                             $.map($(".properties"),function(prop_val,i){
                                                 debug["interface object"][0] ? console.log($(".properties textarea").eq(i).val(),
@@ -849,20 +849,20 @@
                                                     a.split("-")[0].toLowerCase() == interface_color_choice.toLowerCase() ? debug["interface object"][0] ? console.log(a.split("-")[1]): "" : ""
                                                     a.split("-")[0].toLowerCase() == interface_color_choice.toLowerCase() ? interface_color_choice = a.split("-")[1]: ""
                                                 })
-                                                
-                                                
+
+
                                                 getStyleByQuery(".html_object").forEach(function(shade_style,i){
                                                             interface_css_replace["color"]  = shade_style.split(":")[1]
                                                             if( shade_style.split(":")[2] == "norm"){
-                                                                
+
                                                                 interface_css_norm += haystack(shade_style)
                                                             }
                                                             if( shade_style.split(":")[2] == "before"){
-                                                                
+
                                                                 interface_css_before +=haystack(shade_style)
                                                             }
                                                             if( shade_style.split(":")[2] == "after"){
-                                                                
+
                                                                 interface_css_after += haystack(shade_style)
                                                             }
                                                 })
@@ -875,12 +875,12 @@
                                                 $('head').append("<style>.html_object::before"+ interface_css_before +"</style>");
                                                 $('head').append("<style>.html_object::after"+ interface_css_after +"</style>");
                                             //   interface_color_array.forEach(function(swapping,i){
-                                                        
 
-                                                         
+
+
                                             //              if(swapping[1] == "rgb(255, 0, 0)" && swapping[0].indexOf("border") != -1){
                                             //                  interface_spot = swapping[0];
-                                                             
+
                                             //                 //  if(swapping[2] != "norm"){
                                             //                 //     debug["interface object"][0]  ? console.log(swapping[2]) : ""
 
@@ -894,12 +894,12 @@
                                             //                      })
                                             //                 }
                                             //              debug["interface object"][0]  ? console.log(swapping,interface_spot,interface_color_choice) : ""
-                                                          
+
                                             //              }
-                                                            
-                                                        
+
+
                                             //     })
-                                               
+
                                             //   if(interface_css_before != "{"){
                                             //       interface_css_before += "}"
                                             //       $('head').append("<style class = 'psuedo_dynamaic'>.html_object::before" + interface_css_before +"</style>");
@@ -907,7 +907,7 @@
                                             //   if(interface_css_after != "{"){
                                             //       interface_css_after += "}"
                                             //       $('head').append("<style class = 'psuedo_dynamaic'>.html_object::after"+interface_css_after+"</style>");
-                                                   
+
                                             //   }
                                             //   debug["interface object"][0]  ? console.log("norm",interface_css_norm,"before",interface_css_before,"after",interface_css_after) : ""
                                             }
@@ -922,14 +922,14 @@
                                                 "margin-left":"8em",
                                                 "opacity":"1"
                                             })
-                                            
+
                                             $(".page1:not(:first)").css({
                                                 "margin-left":"0px",
                                                 "opacity":"1"
                                             })
                                     }
                                     if(interface_titles_counter == 1){
-                                        
+
                                         $(".page1 .shapes:first").removeClass("stay")
                                         $(".page1 .shapes").adv_clone(2)
                                         $(".page1 .shapes:first").addClass("stay")
@@ -951,7 +951,7 @@
                                         // alert("If you leave empty it will be assumed you only want one clone")
                                     }
                                     if(interface_titles_counter == 2){
-                                        
+
                                         if(type_and_arguments() ==1){
                                             debug["interface object"][0] ? console.log("interface object knows") : ""
                                             interface_titles_counter = 1;
@@ -974,7 +974,7 @@
                                     $(".interface > h2:first").text(interface_titles[interface_titles_counter])
 
                                 })
-                                
+
                             }
                         //////////////////////////////////////////////////////////
                         // for the first part we need to send a shape into the html page
@@ -986,7 +986,7 @@
                             debug["interface object"][2] ? console.log("label and amount") : ""
                             // $(".interface > div").hide()
                         })
-                        
+
                 }
                 //////////////////////////////////////////////////////////
                 //make the object
@@ -1001,11 +1001,11 @@
                             // yin-yang
                             // facebook icon
                 //////////////////////////////////////////////////////////
-                    
+
             })
-            
-            
-        
+
+
+
         ///////////////////////////////////////////////////////////////
         //the interface object here is what will really redefine how we builid websites
         //  it will be a lot faster, a lot more efficient and people will be able to build websites with this app

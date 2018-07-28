@@ -3,3 +3,4 @@ User can choose array of custom shapes
 Can now create a basic shape with width and height
 is able to add shapes properly as requsted, so you use it add an object and use it again
 Can change fully any color in the shapes palette from the website_shapes.css file
+Mozilla and chrome are now compatible when recoloring elements ++ psuedo elements and can do it rather quickly

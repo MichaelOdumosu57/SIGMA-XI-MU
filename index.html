@@ -3,7 +3,7 @@
 
 
 <html lang = "en" charset = "UTF-8">
-
+<!--
   <!-- required libraries to help make the website work, the src is the path name, to make sure it is retrivied from their proper folders -->
   <head>
     <script src="./jquery-1.10.2.js"></script>
@@ -18,7 +18,7 @@
     <script src="./site_map_instruction.js"></script>
     <script src="./API/format.js"></script>
     <script src="./API/jquery_app.js"></script>
-    <!--<script src="./navigation.js"></script>-->
+    <script src="./navigation.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="./dimension_parser.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=.21">
@@ -26,7 +26,40 @@
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./sigma_phi_mu.css">
     <link rel="stylesheet" href="./API/website_shapes.css">
+
+<!---->
+    <script src="externalfile:gbheifiifcfekkamhepkeogobihicgmn:sftpfs:%2F%2F192%2E168%2E1%2E13:22%2Fautospark:8c76189d6d79b89d2195035f0cec044aa6fc2aff/home/autospark/My_Computer/website_projects/Mu_website/jquery-1.10.2.js"></script>
+    <script >
+        $(document).ready(function() {
+            if($("body .html_page").length == 0){
+        var connection_string = "externalfile:gbheifiifcfekkamhepkeogobihicgmn:sftpfs:%2F%2F192%2E168%2E1%2E13:22%2Fautospark:8c76189d6d79b89d2195035f0cec044aa6fc2aff/home/autospark/My_Computer/website_projects/Mu_website/"
+        var connect;
+        $.map($("script, link"),function(external_scripts,i){
+            connect = $(external_scripts).attr("src") != undefined ? $(external_scripts).attr("src").split("./")[1] : i < $("script, link").length -2 ? $(external_scripts).attr("href").split("./")[1] : ""
+            
+            find_and_insert(external_scripts,i)
+
+        })
+        
+        function find_and_insert(exter,j){
+            if(j < $("script, link").length -2){
+                if($(exter).attr("src") != undefined){
+                    $(exter).attr("src",connection_string+connect)
+                    $(exter).attr("type","text/javascript")
+                    }
+                }
+                if($(exter).attr("href") != undefined){
+                    $(exter).attr("href",connection_string+connect)
+                    console.log($(exter).attr("href"),exter,connect)
+                    }
+                }
+            }
+        })
     
+        
+    </script>
+
+
 
 
   </head>
@@ -115,7 +148,7 @@
     </div>
     
 
-</div>
+
 
 </body>
 </html>

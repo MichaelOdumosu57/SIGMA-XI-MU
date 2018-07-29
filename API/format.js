@@ -777,21 +777,82 @@
                         // prev and nxt buttons to move through the interface
                             {
                                 // helper function
-                                    function haystack(css_rule){
-                                        if(css_rule.indexOf("rgb(255, 0, 0)") != -1){
-                                            interface_css_replace["color"] =  interface_color_choice
-                                            debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
-                                        }
-                                        if(css_rule.indexOf(interface_color_choice) != -1){
-                                            interface_css_replace["color"] = "rgb(255, 0, 0)"
-
-                                            debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                    function haystack(css_rule,actual){
+                                        if(actual){
+                                            if(css_rule.indexOf("rgb(255, 0, 0)") != -1){
+                                                interface_css_replace["color"] =  interface_color_choice
+                                                debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                            }
+                                            if(css_rule.indexOf(interface_color_choice) != -1){
+                                                interface_css_replace["color"] = "rgb(255, 0, 0)"
+    
+                                                debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                            }
                                         }
                                         return  css_rule.split(":")[0] + ":" + interface_css_replace["color"]  + ";"
                                     }
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 //this function helps the css query algorightm fix the specifc difference that are appering wrong in the html_page
                                 ////////////////////////////////////////////////////////////////////////////////////////
+                                // helper function
+                                    var css_default_tag;
+                                    var css_default_norm = [];
+                                    var css_default_before = [];
+                                    var css_default_after = [];
+                                    function css_default(custom){
+                                        css_default_tag = $(custom)[0].tagName.toLowerCase()
+                                        debug["interface object"][0] ? console.log(css_default_tag) : ""
+                                        $("body").after("<" +css_default_tag+ "></" +css_default_tag +">")
+                                        debug["interface object"][0] ? console.log($("html >" + css_default_tag)) : ""
+                                        getStyleByQuery("html >" + css_default_tag).forEach(function(shade_style,i){
+                                                    interface_css_replace["color"]  = shade_style.split(":")[1]
+                                                    if( shade_style.split(":")[2] == "norm"){
+    
+                                                        css_default_norm.push(haystack(shade_style,false))
+                                                    }
+                                                    if( shade_style.split(":")[2] == "before"){
+    
+                                                        css_default_before.push(haystack(shade_style,false))
+                                                    }
+                                                    if( shade_style.split(":")[2] == "after"){
+    
+                                                        css_default_after.push(haystack(shade_style,false))
+                                                    }
+                                        })
+                                        debug["interface object"][3] ? console.log(css_default_before) : ""
+                                        getStyleByQuery(custom).forEach(function(shade_style,i){
+                                                    interface_css_replace["color"]  = shade_style.split(":")[1]
+                                                    if( shade_style.split(":")[2] == "norm"){
+                                                        if(css_default_norm[i].split(":")[1] != haystack(shade_style,true).split(":")[1]){
+                                                            interface_css_norm += haystack(shade_style,true)
+                                                        }
+                                                    }
+                                                    if( shade_style.split(":")[2] == "before"){
+                                                        debug["interface object"][3] ? console.log(console.log(i - css_default_before.length ),css_default_before[i-css_default_before.length].split(":")[1],haystack(shade_style,true).split(":")[1]) : ""
+                                                        
+                                                        if(css_default_before[i-css_default_before.length].split(":")[1] != haystack(shade_style,true).split(":")[1]){
+                                                            interface_css_before +=haystack(shade_style,true)
+                                                        }
+                                                    }
+                                                    if( shade_style.split(":")[2] == "after"){
+
+                                                        debug["interface object"][3] ? console.log(console.log(i - (css_default_before.length + css_default_after.length) ),css_default_before[i-(css_default_before.length + css_default_after.length)].split(":")[1],haystack(shade_style,true).split(":")[1]) : ""
+    
+                                                        if(css_default_after[i - (css_default_before.length + css_default_after.length)].split(":")[1] != haystack(shade_style,true).split(":")[1]){
+                                                            interface_css_after +=haystack(shade_style,true)
+                                                        }
+                                                    }
+                                        })
+                                        css_default_norm = [];
+                                        css_default_before = [];
+                                        css_default_after = [];
+                                        $("html >" + css_default_tag).remove()
+                                        debug["interface object"][3] ? console.log(interface_css_norm, interface_css_before, interface_css_after) : ""
+                                    }
+                                ///////////////////////////////////////////////////////////////////
+                                // helps the interface objects filter defaulted css rules, avoiding overloading the DOM
+                                // we do this by making a default versiorn of the respective tag for the custom element
+                                ///////////////////////////////////////////////////////////////////
 
                                 $(".interface").append("<ul class = 'pager'>"+
                                 "<li class = 'previous'>"+
@@ -857,22 +918,7 @@
                                                     a.split("-")[0].toLowerCase() == interface_color_choice.toLowerCase() ? interface_color_choice = a.split("-")[1]: ""
                                                 })
 
-
-                                                getStyleByQuery(".html_object_" + interface_group.toString()).forEach(function(shade_style,i){
-                                                            interface_css_replace["color"]  = shade_style.split(":")[1]
-                                                            if( shade_style.split(":")[2] == "norm"){
-
-                                                                interface_css_norm += haystack(shade_style)
-                                                            }
-                                                            if( shade_style.split(":")[2] == "before"){
-
-                                                                interface_css_before +=haystack(shade_style)
-                                                            }
-                                                            if( shade_style.split(":")[2] == "after"){
-
-                                                                interface_css_after += haystack(shade_style)
-                                                            }
-                                                })
+                                                 css_default(".html_object_" + interface_group.toString())
                                                 //  so at this point we have enough css rules to remake the shape
                                                 $(".html_object_" + interface_group.toString()).attr("id","")
                                                 interface_css_norm += "}"

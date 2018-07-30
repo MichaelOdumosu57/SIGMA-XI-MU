@@ -368,143 +368,143 @@
                                     "cross",
                                     "base",
                                     "pointer",
-                                    "glyphicon-asterisk",
-                                    "glyphicon-plus",
-                                    "glyphicon-eur",
-                                    "glyphicon-euro",
-                                    "glyphicon-minus",
-                                    "glyphicon-cloud",
-                                    "glyphicon-envelope",
-                                    "glyphicon-pencil",
-                                    "glyphicon-glass",
-                                    "glyphicon-music",
-                                    "glyphicon-search",
-                                    "glyphicon-heart",
-                                    "glyphicon-star",
-                                    "glyphicon-star-empty",
-                                    "glyphicon-user",
-                                    "glyphicon-film",
-                                    "glyphicon-th-large",
-                                    "glyphicon-th",
-                                    "glyphicon-th-list",
-                                    "glyphicon-ok",
-                                    "glyphicon-zoom-in",
-                                    "glyphicon-zoom-out",
-                                    "glyphicon-off",
-                                    "glyphicon-cog",
-                                    "glyphicon-trash",
-                                    "glyphicon-home",
-                                    "glyphicon-file",
-                                    "glyphicon-time",
-                                    "glyphicon-road",
-                                    "glyphicon-download-alt",
-                                    "glyphicon-download",
-                                    "glyphicon-upload",
-                                    "glyphicon-inbox",
-                                    "glyphicon-play-circle",
-                                    "glyphicon-repeat",
-                                    "glyphicon-refresh",
-                                    "glyphicon-list-alt",
-                                    "glyphicon-lock",
-                                    "glyphicon-flag",
-                                    "glyphicon-headphones",
-                                    "glyphicon-volume-off",
-                                    "glyphicon-volume-down",
-                                    "glyphicon-volume-up",
-                                    "glyphicon-qrcode",
-                                    "glyphicon-barcode",
-                                    "glyphicon-tag",
-                                    "glyphicon-tags",
-                                    "glyphicon-book",
-                                    "glyphicon-bookmark",
-                                    "glyphicon-print",
-                                    "glyphicon-camera",
-                                    "glyphicon-font",
-                                    "glyphicon-bold",
-                                    "glyphicon-italic",
-                                    "glyphicon-text-height",
-                                    "glyphicon-text-width",
-                                    "glyphicon-align-left",
-                                    "glyphicon-align-center",
-                                    "glyphicon-align-right",
-                                    "glyphicon-align-justify",
-                                    "glyphicon-list",
-                                    "glyphicon-indent-left",
-                                    "glyphicon-indent-right",
-                                    "glyphicon-facetime-video",
-                                    "glyphicon-picture",
-                                    "glyphicon-map-marker",
-                                    "glyphicon-adjust",
-                                    "glyphicon-tint",
-                                    "glyphicon-edit",
-                                    "glyphicon-share",
-                                    "glyphicon-check",
-                                    "glyphicon-move",
-                                    "glyphicon-step-backward",
-                                    "glyphicon-fast-backward",
-                                    "glyphicon-backward",
-                                    "glyphicon-play",
-                                    "glyphicon-pause",
-                                    "glyphicon-stop",
-                                    "glyphicon-forward",
-                                    "glyphicon-fast-forward",
-                                    "glyphicon-step-forward",
-                                    "glyphicon-eject",
-                                    "glyphicon-chevron-left",
-                                    "glyphicon-chevron-right",
-                                    "glyphicon-plus-sign",
-                                    "glyphicon-minus-sign",
-                                    "glyphicon-remove-sign",
-                                    "glyphicon-ok-sign",
-                                    "glyphicon-question-sign",
-                                    "glyphicon-info-sign",
-                                    "glyphicon-screenshot",
-                                    "glyphicon-remove-circle",
-                                    "glyphicon-ok-circle",
-                                    "glyphicon-ban-circle",
-                                    "glyphicon-arrow-left",
-                                    "glyphicon-arrow-right",
-                                    "glyphicon-arrow-up",
-                                    "glyphicon-arrow-down",
-                                    "glyphicon-share-alt",
-                                    "glyphicon-resize-full",
-                                    "glyphicon-resize-small",
-                                    "glyphicon-exclamation-sign",
-                                    "glyphicon-gift",
-                                    "glyphicon-leaf",
-                                    "glyphicon-fire",
-                                    "glyphicon-eye-open",
-                                    "glyphicon-eye-close",
-                                    "glyphicon-warning-sign",
-                                    "glyphicon-plane",
-                                    "glyphicon-calendar",
-                                    "glyphicon-random",
-                                    "glyphicon-comment",
-                                    "glyphicon-magnet",
-                                    "glyphicon-chevron-up",
-                                    "glyphicon-chevron-down",
-                                    "glyphicon-retweet",
-                                    "glyphicon-shopping-cart",
-                                    "glyphicon-folder-close",
-                                    "glyphicon-folder-open",
-                                    "glyphicon-resize-vertical",
-                                    "glyphicon-resize-horizontal",
-                                    "glyphicon-hdd",
-                                    "glyphicon-bullhorn",
-                                    "glyphicon-bell",
-                                    "glyphicon-certificate",
-                                    "glyphicon-thumbs-up",
-                                    "glyphicon-thumbs-down",
-                                    "glyphicon-hand-right",
-                                    "glyphicon-hand-left",
-                                    "glyphicon-hand-up",
-                                    "glyphicon-hand-down",
-                                    "glyphicon-circle-arrow-right",
-                                    "glyphicon-circle-arrow-left",
-                                    "glyphicon-circle-arrow-up",
+                                    // "glyphicon-asterisk",
+                                    // "glyphicon-plus",
+                                    // "glyphicon-eur",
+                                    // "glyphicon-euro",
+                                    // "glyphicon-minus",
+                                    // "glyphicon-cloud",
+                                    // "glyphicon-envelope",
+                                    // "glyphicon-pencil",
+                                    // "glyphicon-glass",
+                                    // "glyphicon-music",
+                                    // "glyphicon-search",
+                                    // "glyphicon-heart",
+                                    // "glyphicon-star",
+                                    // "glyphicon-star-empty",
+                                    // "glyphicon-user",
+                                    // "glyphicon-film",
+                                    // "glyphicon-th-large",
+                                    // "glyphicon-th",
+                                    // "glyphicon-th-list",
+                                    // "glyphicon-ok",
+                                    // "glyphicon-zoom-in",
+                                    // "glyphicon-zoom-out",
+                                    // "glyphicon-off",
+                                    // "glyphicon-cog",
+                                    // "glyphicon-trash",
+                                    // "glyphicon-home",
+                                    // "glyphicon-file",
+                                    // "glyphicon-time",
+                                    // "glyphicon-road",
+                                    // "glyphicon-download-alt",
+                                    // "glyphicon-download",
+                                    // "glyphicon-upload",
+                                    // "glyphicon-inbox",
+                                    // "glyphicon-play-circle",
+                                    // "glyphicon-repeat",
+                                    // "glyphicon-refresh",
+                                    // "glyphicon-list-alt",
+                                    // "glyphicon-lock",
+                                    // "glyphicon-flag",
+                                    // "glyphicon-headphones",
+                                    // "glyphicon-volume-off",
+                                    // "glyphicon-volume-down",
+                                    // "glyphicon-volume-up",
+                                    // "glyphicon-qrcode",
+                                    // "glyphicon-barcode",
+                                    // "glyphicon-tag",
+                                    // "glyphicon-tags",
+                                    // "glyphicon-book",
+                                    // "glyphicon-bookmark",
+                                    // "glyphicon-print",
+                                    // "glyphicon-camera",
+                                    // "glyphicon-font",
+                                    // "glyphicon-bold",
+                                    // "glyphicon-italic",
+                                    // "glyphicon-text-height",
+                                    // "glyphicon-text-width",
+                                    // "glyphicon-align-left",
+                                    // "glyphicon-align-center",
+                                    // "glyphicon-align-right",
+                                    // "glyphicon-align-justify",
+                                    // "glyphicon-list",
+                                    // "glyphicon-indent-left",
+                                    // "glyphicon-indent-right",
+                                    // "glyphicon-facetime-video",
+                                    // "glyphicon-picture",
+                                    // "glyphicon-map-marker",
+                                    // "glyphicon-adjust",
+                                    // "glyphicon-tint",
+                                    // "glyphicon-edit",
+                                    // "glyphicon-share",
+                                    // "glyphicon-check",
+                                    // "glyphicon-move",
+                                    // "glyphicon-step-backward",
+                                    // "glyphicon-fast-backward",
+                                    // "glyphicon-backward",
+                                    // "glyphicon-play",
+                                    // "glyphicon-pause",
+                                    // "glyphicon-stop",
+                                    // "glyphicon-forward",
+                                    // "glyphicon-fast-forward",
+                                    // "glyphicon-step-forward",
+                                    // "glyphicon-eject",
+                                    // "glyphicon-chevron-left",
+                                    // "glyphicon-chevron-right",
+                                    // "glyphicon-plus-sign",
+                                    // "glyphicon-minus-sign",
+                                    // "glyphicon-remove-sign",
+                                    // "glyphicon-ok-sign",
+                                    // "glyphicon-question-sign",
+                                    // "glyphicon-info-sign",
+                                    // "glyphicon-screenshot",
+                                    // "glyphicon-remove-circle",
+                                    // "glyphicon-ok-circle",
+                                    // "glyphicon-ban-circle",
+                                    // "glyphicon-arrow-left",
+                                    // "glyphicon-arrow-right",
+                                    // "glyphicon-arrow-up",
+                                    // "glyphicon-arrow-down",
+                                    // "glyphicon-share-alt",
+                                    // "glyphicon-resize-full",
+                                    // "glyphicon-resize-small",
+                                    // "glyphicon-exclamation-sign",
+                                    // "glyphicon-gift",
+                                    // "glyphicon-leaf",
+                                    // "glyphicon-fire",
+                                    // "glyphicon-eye-open",
+                                    // "glyphicon-eye-close",
+                                    // "glyphicon-warning-sign",
+                                    // "glyphicon-plane",
+                                    // "glyphicon-calendar",
+                                    // "glyphicon-random",
+                                    // "glyphicon-comment",
+                                    // "glyphicon-magnet",
+                                    // "glyphicon-chevron-up",
+                                    // "glyphicon-chevron-down",
+                                    // "glyphicon-retweet",
+                                    // "glyphicon-shopping-cart",
+                                    // "glyphicon-folder-close",
+                                    // "glyphicon-folder-open",
+                                    // "glyphicon-resize-vertical",
+                                    // "glyphicon-resize-horizontal",
+                                    // "glyphicon-hdd",
+                                    // "glyphicon-bullhorn",
+                                    // "glyphicon-bell",
+                                    // "glyphicon-certificate",
+                                    // "glyphicon-thumbs-up",
+                                    // "glyphicon-thumbs-down",
+                                    // "glyphicon-hand-right",
+                                    // "glyphicon-hand-left",
+                                    // "glyphicon-hand-up",
+                                    // "glyphicon-hand-down",
+                                    // "glyphicon-circle-arrow-right",
+                                    // "glyphicon-circle-arrow-left",
+                                    // "glyphicon-circle-arrow-up",
 
                                     ];
-            var interface_counter = 14;
+            var interface_counter = 0;
             var interface_counter_old = 0;
             var interface_titles = ["Make the object","Type & Amount","Design the Object"]
             var interface_titles_counter = 0;
@@ -516,7 +516,8 @@
             var interface_css_norm = "{"
             var interface_css_before = "{"
             var interface_css_after = "{"
-            var interface_css_replace = { color : "",
+            var interface_css_replace = { choice: null,
+                                          color : "",
                                           height:0,
                                           width : 0
                                         }
@@ -777,22 +778,66 @@
                         // prev and nxt buttons to move through the interface
                             {
                                 // helper function
+                                var interface_css_replace_width;
+                                var interface_css_replace_height;
+                                var interface_special_rules = {"transform-origin:after": ""
+                                    
+                                }
                                     function haystack(css_rule,actual){
                                         if(actual){
+                                            if(css_rule.indexOf("box-shadow") == 0){
+                                                debug["interface object"][0] ? console.log(css_rule.split(":")[1].split("0)")[1]) : ""
+                                                interface_css_replace["color"] =  interface_color_choice
+                                                return css_rule.split(":")[0] + ":" + interface_css_replace["color"]  +  css_rule.split(":")[1].split("0)")[1] + ";"
+                                            }
+                                            // the other browsers might have something to say
+                                            //  if desired then the box-shadow dimensions might need to be affect by the dimension ratio
                                             if(css_rule.indexOf("rgb(255, 0, 0)") != -1){
                                                 interface_css_replace["color"] =  interface_color_choice
-                                                debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                                debug["interface object"][4]  ? console.log(css_rule,interface_css_replace["color"]) : ""
                                             }
                                             if(css_rule.indexOf(interface_color_choice) != -1){
                                                 interface_css_replace["color"] = "rgb(255, 0, 0)"
     
                                                 debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
                                             }
+                                            
+                                            // if(css_rule.indexOf("height") == 0 || css_rule.indexOf("width") == 0 ){
+                                            //     debug["interface object"][0]  ? console.log("you cant get this somehow",css_rule) : ""
+                                            // }
+                                            if(css_rule.split(":")[1].indexOf("px") != -1 &&  (css_rule.indexOf("border") != -1 || css_rule.indexOf("margin-bottom") != -1 || css_rule.indexOf("margin") == -1  || css_rule.indexOf("height") == 0 || css_rule.indexOf("width") == 0 || css_rule.indexOf("transform-origin") == 0  ) ){
+
+                                                if((css_rule.indexOf("left") != -1 || css_rule.indexOf("right") != -1 || css_rule.indexOf("width") == 0 ) && !isNaN(interface_css_replace["width"])   ){
+                                                    debug["interface object"][0]  ? console.log(css_rule,numberParse(css_rule.split(":")[1]) ,parseFloat(interface_css_replace["width"])) : ""
+                                                    interface_css_replace_width = numberParse(css_rule.split(":")[1]) * parseFloat(interface_css_replace["width"])
+                                                    return  css_rule.split(":")[0] + ":" + interface_css_replace_width.toString() + "px"  + ";"
+                                                }
+                                                
+                                                
+                                                
+                                                else if((css_rule.indexOf("top") != -1 || css_rule.indexOf("bottom") != -1  || css_rule.indexOf("height") == 0) && !isNaN(interface_css_replace["height"]) ){
+                                                    debug["interface object"][0]  ? console.log(css_rule,numberParse(css_rule.split(":")[1]) , parseFloat(interface_css_replace["height"])) : ""
+                                                    interface_css_replace_height = numberParse(css_rule.split(":")[1]) * parseFloat(interface_css_replace["height"])
+                                                    return  css_rule.split(":")[0] + ":" + interface_css_replace_height.toString() + "px"  + ";"
+                                                }
+                                                
+                                                else if(css_rule.indexOf("transform-origin") == 0 && (!isNaN(interface_css_replace["width"]) && !isNaN(interface_css_replace["height"]))  ){
+                                                    debug["interface object"][0]  ? console.log("the final piece",css_rule.split(":")[1].split(" ")) : ""
+                                                    interface_special_rules["transform-origin:after"] = (numberParse(css_rule.split(":")[1].split(" ")[0]) * interface_css_replace["width"]).toString() + "px" + " " + (numberParse(css_rule.split(":")[1].split(" ")[1]) * interface_css_replace["height"]).toString() + "px"
+                                                        return  css_rule.split(":")[0] + ":" + interface_special_rules["transform-origin:after"]  + ";"
+                                                    
+                                                }
+                                                
+                                            }
                                         }
                                         return  css_rule.split(":")[0] + ":" + interface_css_replace["color"]  + ";"
                                     }
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 //this function helps the css query algorightm fix the specifc difference that are appering wrong in the html_page
+                                // did nt know how I set interface_css_replace["color"] to be the default
+                                // var interface_css_replace_width; these varibles are ratio to help the interface set the dimensions of the html objects
+                                // var interface_css_replace_height; these varibles are ratio to help the interface set the dimensions of the html objects
+                                // var interface_special_rules are special rules for each object
                                 ////////////////////////////////////////////////////////////////////////////////////////
                                 // helper function
                                     var css_default_tag;
@@ -898,6 +943,15 @@
                                                     detail_css_prop = ""
                                                     interface_color_choice = $(".properties textarea").eq(i).val()
                                                 }
+                                                if($(".properties h3").eq(i).text() == "Height"){
+                                                    detail_css_prop = ""
+                                                    interface_css_replace["height"] = $(".properties textarea").eq(i).val()
+                                                }
+                                                if($(".properties h3").eq(i).text() == "Width"){
+                                                    detail_css_prop = ""
+                                                    interface_css_replace["width"] = $(".properties textarea").eq(i).val()
+                                                }
+                                                                                                
                                                 $(".prototype").css(
                                                     detail_css_prop , detail_css_val
                                                 )
@@ -1048,6 +1102,9 @@
         // var interface_css_after for the css for the after element
         // var interface_css_replace helps the inteface object replace proper values about the object
         // var interface_group gives the created objects an identity group so they wont be affected by new objects coming into the html page
+        
+        
+        // the interface will deal with position, z-index of the screen and so forth
         ///////////////////////////////////////////////////////////////
 
         // external objects
@@ -1092,6 +1149,9 @@
 
     // test objects ill deal with this when I find necessary
     $(".interface").trigger("click")
+    $(".page2 textarea").eq(1).text("1")
+    $(".page3 > .properties textarea ").text("6")
+    $(".page3 > .properties textarea ").eq(2).text("blue")
     // $(".interface ul a:last").trigger("click")
     // $(".interface ul a:last").trigger("click")
     ////////////////////////////////////////////////////////////////////

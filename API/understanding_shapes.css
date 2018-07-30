@@ -1,0 +1,297 @@
+
+
+
+
+#star-five.shapes {
+   margin: 50px 0;
+   position: relative;
+   display: block;
+   color: red;
+   width: 0px;
+   height: 0px;
+   border-right:  100px solid transparent;
+   border-bottom: 70px  solid red;
+   border-left:   100px solid transparent;
+   -webkit-transform: rotate(35deg);
+   -ms-transform:     rotate(35deg);
+   -o-transform:      rotate(35deg);
+}
+#star-five.shapes:before {
+   border-bottom: 80px solid red;
+   border-left: 30px solid transparent;
+   border-right: 30px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -45px;
+   left: -65px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-35deg);
+   -moz-transform:    rotate(-35deg);
+   -ms-transform:     rotate(-35deg);
+   -o-transform:      rotate(-35deg);
+
+}
+#star-five.shapes:after {
+   position: absolute;
+   display: block;
+   color: red;
+   top: 3px;
+   left: -105px;
+   width: 0px;
+   height: 0px;
+   border-right: 100px solid transparent;
+   border-bottom: 70px solid red;
+   border-left: 100px solid transparent;
+   -webkit-transform: rotate(-70deg);
+   -moz-transform:    rotate(-70deg);
+   -ms-transform:     rotate(-70deg);
+   -o-transform:      rotate(-70deg);
+   content: '';
+}
+
+
+
+}
+
+to increase a dimension by square you must multiply eveyhing except for rotate variables by a squaring factor
+so when you rotate the real element you rotate the whole element
+/**/
+#star-five.shapes {
+   margin: 75px 0;
+   position: relative;
+   display: block;
+   color: red;
+   width: 0px;
+   height: 0px;
+   border-right:  150px solid transparent;
+   border-bottom: 105px  solid red;
+   border-left:   150px solid transparent;
+   -webkit-transform: rotate(35deg);
+   -ms-transform:     rotate(35deg);
+   -o-transform:      rotate(35deg);
+}
+#star-five.shapes:before {
+   border-bottom: 120px solid red;
+   border-left: 45px solid transparent;
+   border-right: 45px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -67.5px;
+   left: -97.5px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-35deg);
+   -moz-transform:    rotate(-35deg);
+   -ms-transform:     rotate(-35deg);
+   -o-transform:      rotate(-35deg);
+
+}
+#star-five.shapes:after {
+   position: absolute;
+   display: block;
+   color: red;
+   top: 4.5px;
+   left: -157.5px;
+   width: 0px;
+   height: 0px;
+   border-right: 150px solid transparent;
+   border-bottom: 105px solid red;
+   border-left: 150px solid transparent;
+   -webkit-transform: rotate(-70deg);
+   -moz-transform:    rotate(-70deg);
+   -ms-transform:     rotate(-70deg);
+   -o-transform:      rotate(-70deg);
+   content: '';
+}
+
+.html_object_0::after{border-bottom-color:undefined;border-bottom-style:solid;border-bottom-width:105px;border-left-color:rgba(0, 0, 0, 0);border-left-style:solid;border-left-width:150px;border-right-color:rgba(0, 0, 0, 0);border-right-style:solid;border-right-width:150px;border-top-color:undefined;bottom:-109.5px;color:undefined;content:"";display:block;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;height:70px;left:-157.5px;line-height:20px;outline-color:undefined;position:absolute;right:-142.5px;text-decoration:undefined;text-decoration-color:undefined;top:4.5px;width:200px;column-rule-color:undefined;perspective-origin:100px 35px;-webkit-text-emphasis-color:undefined;-webkit-text-fill-color:undefined;-webkit-text-stroke-color:undefined;transform:matrix(0.34202, -0.939693, 0.939693, 0.34202, 0, 0);transform-origin:100px 35px;caret-color:undefined;}
+
+/**/
+
+ to widen the element
+ 
+which are narrow head
+
+#star-five.shapes {
+   margin: 75px 0;
+   position: relative;
+   display: block;
+   color: red;
+   width: 0px;
+   height: 0px;
+   border-right:  150px solid transparent;
+   border-bottom: 70px  solid red;
+   border-left:   150px solid transparent;
+   -moz-transform:    rotate(23.3333333333deg);
+   -webkit-transform: rotate(23.3333333333deg);
+   -ms-transform:     rotate(23.3333333333deg);
+   -o-transform:      rotate(23.3333333333deg);
+}
+#star-five.shapes:before {
+   border-bottom: 120px solid red;
+   border-left: 30px solid transparent;
+   border-right: 30px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -45px;
+   left: -43.333333333px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-23.3333333333deg);
+   -moz-transform:    rotate(-23.3333333333deg);
+   -ms-transform:     rotate(-23.3333333333deg);
+   -o-transform:      rotate(-23.3333333333deg);
+
+}
+#star-five.shapes:after {
+   position: absolute;
+   display: block;
+   color: red;
+   top: 3px;
+   left: -157.5px;
+   width: 0px;
+   height: 0px;
+   border-right: 150px solid transparent;
+   border-bottom: 70px solid red;
+   border-left: 150px solid transparent;
+   -webkit-transform: rotate(-46.6666666667deg);
+   -moz-transform:    rotate(-46.6666666667deg);
+   -ms-transform:     rotate(-46.6666666667deg);
+   -o-transform:      rotate(-46.6666666667deg);
+   content: '';
+}
+I choose first narrow head because, as the wider the user decides to spread the star the thinner the top should be
+or a relative head
+
+#star-five.shapes {
+   margin: 75px 0;
+   position: relative;
+   display: block;
+   color: red;
+   width: 0px;
+   height: 0px;
+   border-right:  150px solid transparent;
+   border-bottom: 70px  solid red;
+   border-left:   150px solid transparent;
+   -moz-transform:    rotate(23.3333333333deg);
+   -webkit-transform: rotate(23.3333333333deg);
+   -ms-transform:     rotate(23.3333333333deg);
+   -o-transform:      rotate(23.3333333333deg);
+}
+#star-five.shapes:before {
+   border-bottom: 120px solid red;
+   border-left: 45px solid transparent;
+   border-right: 45px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -60px;
+   left: -65px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-23.3333333333deg);
+   -moz-transform:    rotate(-23.3333333333deg);
+   -ms-transform:     rotate(-23.3333333333deg);
+   -o-transform:      rotate(-23.3333333333deg);
+
+}
+#star-five.shapes:after {
+   position: absolute;
+   display: block;
+   color: red;
+   top: 3px;
+   left: -157.5px;
+   width: 0px;
+   height: 0px;
+   border-right: 150px solid transparent;
+   border-bottom: 70px solid red;
+   border-left: 150px solid transparent;
+   -webkit-transform: rotate(-46.6666666667deg);
+   -moz-transform:    rotate(-46.6666666667deg);
+   -ms-transform:     rotate(-46.6666666667deg);
+   -o-transform:      rotate(-46.6666666667deg);
+   content: '';
+}
+
+to heighten the element
+
+
+#star-five.shapes {
+   margin: 75px 0;
+   position: relative;
+   display: block;
+   color: red;
+   width: 0px;
+   height: 0px;
+   border-right:  100px solid transparent;
+   border-bottom: 105px  solid red;
+   border-left:   100px solid transparent;
+   -webkit-transform: rotate(52.5deg);
+   -ms-transform:     rotate(52.5deg);
+   -o-transform:      rotate(52.5deg);
+}
+#star-five.shapes:before {
+   border-bottom: 120px solid red;
+   border-left: 30px solid transparent;
+   border-right: 30px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -67.5px;
+   left: -97.5px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-52.5deg);
+   -moz-transform:    rotate(-52.5deg);
+   -ms-transform:     rotate(-52.5deg);
+   -o-transform:      rotate(-52.5deg);
+
+}
+#star-five.shapes:after {
+   position: absolute;
+   display: block;
+   color: red;
+   top: 4.5px;
+   left: -105px;
+   width: 0px;
+   height: 0px;
+   border-right: 100px solid transparent;
+   border-bottom:105px solid red;
+   border-left: 100px solid transparent;
+   -webkit-transform: rotate(-105deg);
+   -moz-transform:    rotate(-105deg);
+   -ms-transform:     rotate(-105deg);
+   -o-transform:      rotate(-105deg);
+   content: '';
+}
+
+
+special bugs with our algorithm
+
+
+
+pentagon
+dimensions are sligtly off
+
+space invader
+turns to one pixel
+
+flag
+looks weird go to home source
+
+for these needed to apply the ratio to the transform-origin in the before psuedo element as well
+star-5
+heart
+burst-12
+burst-8
+
+
+for this i needed to make a special case for the box-shadow in haystack, the box-shadow css rule does not divy up its sub rules, but I plan the other browers will have to say many things
+moon
+
+design idea
+have box shadows hit object where info belongs, one box shadows hit the object fill it with the respective information

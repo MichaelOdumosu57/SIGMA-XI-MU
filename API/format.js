@@ -31,13 +31,37 @@
             $("body > *:not('.debug')").css({
               "position":"absolute"
             })
+            $("body  *:not('.test')").css({
+              "position":"absolute"
+            })
 
 
 
             ////////////////////////////////////////////////////////////////////
             // global fix for purposeful programming
             ////////////////////////////////////////////////////////////////////
+     //global function
+        {
+            // helper function
+            {
+                function text_dimension(string_selector)
+                {
+                    
+                    var canvas = document.createElement("canvas");
+                    var ctx = canvas.getContext("2d");
+                    ctx.font =  string_selector.css("font-size") + " " + string_selector.css("font-family") ;  // This can be set programmaticly from
+                    var textWidth = ctx.measureText(string_selector.text()).width;
+                    return textWidth
+                }
 
+            }
+                //////////////////////////////////////////////////////////////
+                // this function returns the text width and height of given strings
+                //////////////////////////////////////////////////////////////
+        }
+    ////////////////////////////////////////////////////////////////////
+    // global function are functions that the developer will always need
+    ////////////////////////////////////////////////////////////////////
      //the html container
      {
 
@@ -339,11 +363,10 @@
                                     "triangle-bottomright",
                                     "curvedarrow",
                                     "trapezoid",
+                                    "parallelogram",
                                     "star-six",
-                                    "star-five",
-                                    "pentagon",
+                                    // "pentagon",
                                     "hexagon",
-                                    "octagon",
                                     "heart",
                                     "infinity",
                                     "diamond",
@@ -355,13 +378,13 @@
                                     "talkbubble",
                                     "burst-12",
                                     "burst-8",
-                                    "yin-yang",
+                                    // "yin-yang",
                                     "badge-ribbon",
-                                    "space-invader",
+                                    // "space-invader",
                                     "tv",
                                     "chevron",
                                     "magnifying-glass",
-                                    "facebook-icon",
+                                    // "facebook-icon",
                                     "moon",
                                     "flag",
                                     "cone",
@@ -504,7 +527,11 @@
                                     // "glyphicon-circle-arrow-up",
 
                                     ];
-            var interface_counter = 0;
+            var interface_counter = 37;
+            // problems with scale star-five,pentagon
+            // problems with wider height and wdth
+            // width to reshape
+                // star-five $(".html_object_0").css("transform","matrix(1.5, 0.573576, -1, 0.819152, 0, 0)")
             var interface_counter_old = 0;
             var interface_titles = ["Make the object","Type & Amount","Design the Object"]
             var interface_titles_counter = 0;
@@ -614,7 +641,7 @@
                             "margin-left": .4 * numberParse($(".interface > div:first").css("width")),
                             "margin-top": .3 * numberParse($(".interface > div:first").css("height"))
                         }).addClass("shapes glyphicon ").attr("id",interface_shapes[interface_counter])
-
+                        
 
                         $(".interface-left").click(function(event){
                             interface_counter_old = interface_counter
@@ -637,14 +664,15 @@
                                 $(".interface > div > div").addClass(interface_shapes[interface_counter]).removeClass(interface_shapes[interface_counter -1]).attr("id","")
                             }
                             else{
-                                $(".interface > div > div").attr("id",interface_shapes[interface_counter])
-                                $(".interface > div > div").removeClass(interface_shapes[interface_counter_old])
+                                $(".interface > div  > div").attr("id",interface_shapes[interface_counter])
+                                $(".interface > div  > div").removeClass(interface_shapes[interface_counter_old])
                             }
                         })
 
                     }
                     //////////////////////////////////////////////////////////
                     // will use an array to understand how we will make the object
+                    // if anyhting happens change $(".interface > div  div") to $(".interface > div  > div") and reverse debug
                     //////////////////////////////////////////////////////////
 
                     // page2
@@ -715,6 +743,19 @@
                             var detail_information = ["Height","Width","Color"]
                             var detail_css_prop;
                             var detail_css_val;
+                            var page_3_execute = false
+                            var page_3_color_initial = {
+                                    "height":"",
+                                    "width":"",
+                                    "margin-left":"0em"
+                                }
+                            
+                            var page_3_color_final = {
+                                    "height":"1500px",
+                                    "width":"900px",
+                                    "margin-left":"-38em"
+                                }
+                            var $page_3_color_pallete;
                             $(".interface").append("<div class = 'page3'></div>")
                             $(".page3").css({
                                 "background-color":"blue",
@@ -761,6 +802,301 @@
                             }),function(properties,i){
                                 $(".properties div h3").eq(i).text(detail_information[i])
                             })
+                            $(".page3 .properties textarea").eq(2).hide()
+                            page_3_color_initial = {
+                                    "height":$(".page3 .properties").eq(0).css("height"),
+                                    "width":$(".page3 .properties").eq(0).css("width"),
+                                    "margin-left":"0em"
+                            }
+                            $page_3_color_pallete = $(".page3 .properties").eq(2)
+                            $page_3_color_pallete.click(function(event){
+                                debug["color pallete"][2] ? console.log($(".color-choice")) : ""
+                                debug["color pallete"][2] ? console.log($page_3_color_pallete.css("width")) : ""
+                                if( $page_3_color_pallete.css("width") == page_3_color_final["width"]){
+                                    return
+                                }
+                                $(this).animate(page_3_color_final,2000)
+                            
+                            
+                            //page 3 simple color decoration
+                            
+                            
+                                {
+                                    var page3_color;
+                                    var page3_index = 0;
+                                    var page3_th_color_box = {
+                                        "height":numberParse($(".page3 ").css("height"))/11,
+                                        "width":""
+                                    }
+                                    
+                                    debug["color pallete"][2] ? console.log(page_3_color_final["height"],page_3_color_final["width"]) : ""
+                                    
+
+                                    $page_3_color_pallete.append("<div class = 'color-choice'><table class = 'color-choice'></table></div>")
+                                    $("table.color-choice").css({
+                                        "height":numberParse($(".page3 ").css("height")),
+                                        "width":numberParse($(".page3 ").css("width")),
+                                        "border": "3px solid black",
+                                        "margin":"auto",
+                                        "overflow-y":"scroll",
+                                    })
+                                    
+                                    $("div.color-choice").css({
+                                        "overflow-y":"scroll",
+                                        "border":"3px solid blue",
+                                        "position":"absolute"
+                                    })
+                                    
+                                    page3_th_color_box["width"] = numberParse($("table.color-choice").css("width"))/5
+                                    $("table.color-choice").append("<tbody><tr><th></th></tr></tbody>")
+                                    debug["color pallete"][2] ? console.log(interface_colors.split("+").length) : ""
+
+                                    $("table.color-choice tr").css({
+                                        "height":numberParse($(".page3 ").css("height"))/8,
+                                        "width":$("table.color-choice").css("width"),
+                                        "border":"1px solid blue",
+                                        
+                                    }).adv_clone(interface_colors.split("+").length)
+                                    
+                                    $.map($("table.color-choice tr"),function(x,i){
+                                        
+                                        $("table.color-choice tr:eq(" + i + ") > th").adv_clone(2)
+                                        $("table.color-choice tr:eq(" + i + ") > th").eq(0).append("<div class = 'color-box' ></div>")
+                                        $(".color-box").eq(i).css({
+                                            "background-color":interface_colors.split("+")[i].split("-")[1]
+                                        })
+                                        $("table.color-choice tr:eq(" + i + ") > th").eq(1).text(interface_colors.split("+")[i].split("-")[0])
+
+                                    })
+
+                                    $(".color-box").css({
+                                        "height":page3_th_color_box["height"],
+                                        "width":page3_th_color_box["width"],
+                                        "border":"1px solid DarkMagenta",
+                                        "margin-left":"5em"
+                                    })
+                                    
+                                    $("table.color-choice th").css({
+                                        "border":"1px solid blue",
+                                        "width":numberParse($("table.color-choice").css("width"))/5
+                                    })
+
+                                    
+                                    $(".color-choice").css({
+                                        "overflow-y":"scroll",
+                                        "height":numberParse($(".page3 ").css("height"))
+                                    })
+                                    
+                                    $(".page3 .properties textarea").eq(2).hide()
+
+                                    
+                                    $("table.color-choice tr").click(function(event){
+                                        debug["color pallete"][0] ? console.log(event,gradient_color_activate ) : ""
+                                        if( !$page_3_color_pallete.hasClass("color_pallete") || gradient_color_activate == true){
+                                            return
+                                        }
+                                        
+                                        $(this).css({
+                                            "font-size":"20px"
+                                        })
+                                        debug["color pallete"][0] ? console.log($(this).css("font-size"),$(this).css("font-family")) : ""
+                                        $(".page3 .properties textarea").eq(2).css({
+                                            "font-size":"20px"
+                                        })
+                                        $(".page3 .properties textarea").eq(2).text($(this).text()).show().css({
+                                            "width":text_dimension($("table.color-choice tr").eq(1)) *1.4,
+                                            "margin-left":numberParse($(".page3 .properties").eq(0).css("width"))/2- (text_dimension($("table.color-choice tr").eq(1)) * 1.2)
+                                            
+                                        })
+                                        debug["color pallete"][0] ? console.log($(".page3 .properties textarea").eq(2).css("font-size"),$(".page3 .properties textarea").eq(2).css("font-family")) : ""
+                                        $("div.color-choice").remove()
+                                        $page_3_color_pallete.animate(page_3_color_initial)
+                                        debug["color pallete"][2]  ? console.log($page_3_color_pallete.css("height"),$page_3_color_pallete.css("width"),$(".page3 .properties").eq(0).css("height"),$(".page3 .properties").eq(0).css("width")) : ""
+                                        $page_3_color_pallete.removeClass("color_pallete")
+                                        page_3_execute = false
+                                    })
+                                    
+                                }
+                            //////////////////////////////////////////////////////////
+                            // this part of the program is to provide the options for the colors
+                            // var page3_color dynamic variable helping us choose the colors for the work
+                            // var page3_index is for the boxes
+                            // interesting, even if a tr does not have text, if it has a color jquery seems advanced enough to figure and return the color amazing
+                            //////////////////////////////////////////////////////////
+                            
+                            // page 3 gradient decoration
+                                {
+                                    var gradient_color_activate = false;
+                                    var gradient_type_string = "";
+                                    var gradient_angle_string = "";
+                                    var gradient_circle_string = "";
+                                    var gradient_color_string = "";
+                                    var gradient_string = {
+                                        type:gradient_type_string,
+                                        angle:gradient_angle_string,
+                                        circle:gradient_circle_string,
+                                        color:gradient_color_string,
+                                        
+                                        
+                                    }
+                                    $("div.color-choice").after("<div class = 'color-gradient'><h2>Gradience</h2></div>")
+                                    $(".color-gradient").css({
+                                        "width":"60em",
+                                        "height":"30em",
+                                        "border":"1px solid green",
+                                        "margin-top":numberParse($(".color-choice").css("height"))*1.2
+                                    })
+                                    $(".color-gradient h2").css({
+                                        "text-align":"center"
+                                    }).after("<div class = 'gradient-log'></div><div class = 'gradient-holder'></div>")
+                                    $(".gradient-log").css({
+                                        "width":numberParse($(".color-gradient").css("width"))/2.5,
+                                        "height":numberParse($(".color-gradient").css("height"))/1.2,
+                                        "border":"1px solid green",
+                                        "margin-left":"3em"
+                                    }).append('<div class="container gradient-option">' +
+                                                  '<div class="dropdown">' +
+                                                    '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Gradient Options'+
+                                                    '<span class="caret"></span></button>'+
+                                                    '<ul class="dropdown-menu">' +
+                                                      '<li><a >linear-gradient</a></li>' +
+                                                      '<li><a >repeating-linear-gradient</a></li>' +
+                                                      '<li><a >radial-gradient</a></li>' +
+                                                      '<li><a >repeating-radial-gradient</a></li>' +
+                                                    '</ul> '+
+                                                  '</div>' +
+                                                  '<input></input>'+
+                                                '</div>'
+                                                         )
+                                    $(".gradient-option li").click(function(event){
+                                        debug["color pallete"][0] ? console.log($(this).text()) : ""
+                                        $(".gradient-option input").val($(this).text())
+                                        gradient_type_string = $(this).text()
+                                    })
+
+                                    
+                                    $(".gradient-log").append("<div class = 'gradient-angle'><p>Angle</p><input></input></div>")
+                                    $(".gradient-angle input").css({
+                                        "width":text_dimension($(".gradient-angle p"))
+                                    })
+                                    $(".gradient-angle input").click(function(event){
+                                        $(this).after("<div class = 'gradient-submit'><button type='submit' class='btn btn-default'>OK</button></div>")
+                                        $(".gradient-angle button").click(function(event){
+                                            gradient_angle_string = $(".gradient-angle input").val()
+                                        })
+                                    })
+                                    
+                                    $(".gradient-log").append('<div class="container gradient-option">' +
+                                                  '<div class="dropdown">' +
+                                                    '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Circle Location'+
+                                                    '<span class="caret"></span></button>'+
+                                                    '<ul class="dropdown-menu">' +
+                                                      '<li><a href="#">closest-side</a></li>' +
+                                                      '<li><a href="#">farthest-side</a></li>' +
+                                                      '<li><a href="#">closest-corner</a></li>' +
+                                                      '<li><a href="#">farthest-corner</a></li>' +
+                                                    '</ul> '+
+                                                  '</div>' +
+                                                  '<textarea></textarea>'+
+                                                '</div>')
+                                    
+                                    $(".gradient-log").append("<div class = 'gradient-colors'><button>Click here to choose colors your like to see in your gradient</button><div><p></p></div></div>")
+                                    $(".gradient-colors > div").css({
+                                            "height":$(".gradient-option button").css("height"),
+                                            "width":$(".gradient-option button").css("width"),
+                                            "border":"1px solid green",
+                                            "word-wrap":"break-word",
+                                            "overflow-y":"scroll"
+                                    })
+                                    $(".gradient-colors > button").click(function(event){
+                                        event.preventDefault()
+                                        gradient_color_activate = true
+                                        debug["color pallete"][0] ? console.log(gradient_color_activate) : ""
+                                        $(".gradient-colors > button").text("Click again to deactivate")
+                                        $("table.color-choice tr").click(function(event){
+                                            debug["color pallete"][0] ? console.log($(this).text()) : ""
+                                            gradient_color_string += $(this).text() + ","
+                                            $(".gradient-colors > div > p").text(gradient_color_string)
+                                        })
+                                    })
+                                    
+                                    $(".gradient-log").append("<div class = 'gradient-submit'><button type='submit' class='btn btn-default'>Submit</button></div>")
+                                    $(".gradient-submit").click(function(event){
+                                        gradient_string = {
+                                            type:gradient_type_string,
+                                            angle:gradient_angle_string,
+                                            circle:gradient_circle_string,
+                                            color:gradient_color_string,
+                                            final:gradient_type_string + "(" + (gradient_type_string.indexOf("radial") != -1 ? gradient_circle_string : gradient_angle_string.toString() + "deg,").toString() + gradient_color_string
+                                            
+                                        }
+                                        debug["color pallete"][0] ? console.log($(".shapes.color-gradient").css("background-image"),gradient_string) : ""
+                                    })
+                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    $(".test_button").eq(0).trigger("click")
+                                    $(".gradient-holder").css({
+                                        "width":numberParse($(".color-gradient").css("width"))/2.5,
+                                        "height":numberParse($(".color-gradient").css("height"))/1.2,
+                                        "border":"1px solid green",
+                                        "margin-left":numberParse($(".gradient-log").css("width"))*1.3,
+                                        "margin-top":-numberParse($(".gradient-log").css("height"))
+                                    }).append("<div class = 'shapes outer' id = " + interface_shapes[interface_counter] + "><div></div></div>")
+                                    
+                                    
+                                        //handling shape in test
+
+                                        $(".test").append("<div class = 'shapes ' id = " + interface_shapes[interface_counter] + "><div></div></div>")
+                                        $(".test > .shapes").css({
+                                            "margin":"50px"
+                                        })
+                                        gathering_true_dimension(0,0,".test")
+                                        
+                                        /////////////////////////////////////////////////////////////////////////////
+                                        //
+                                        /////////////////////////////////////////////////////////////////////////////
+                                    $(".gradient-holder > .outer > div").css({
+                                        "margin":"auto",
+                                        "height":pixelArray["maxY"] - pixelArray["minY"] ,
+                                        "width":pixelArray["maxX"] - pixelArray["minX"],
+                                        "background-image": "linear-gradient(red, yellow, green)",
+                                        
+                                    })
+                                    
+                                    $(".color-gradient *").addClass("color-gradient")
+
+                                }
+                            //////////////////////////////////////////////////////////
+                            //this section deails with the properties requried when the user wants a a gradient applied to the object
+                            // gradient colors will deactivate the algorithm assocaited with that closes the color pallete and will be use to fill options in the color gradient
+                            // var gradient_color_activate  will control the tr click function whether the tr click event should go to gradient or the simple
+                            // var gradient_color_string helps the interface know all the colors the user has chosen
+                            // now concerning gradience, some shapes need some modifying
+                                // triangles
+                                // curved arrow
+                                // trapezoid
+                                // star- six
+                                // hexagon
+                                // heart
+                                // diamonds
+                                // pacman
+                                // talkbubble
+                                // burst
+                                // badge-ribbon
+                                // chevron
+                                // magnifier
+                                // moon
+                                // flag
+                                // cone
+                                // cross
+                                // base
+                                // pointer
+                            //////////////////////////////////////////////////////////
+                            
+                                $page_3_color_pallete.addClass("color_pallete")
+                                page_3_execute = true
+
+                            })
+
                             $(".page3").pretty_print({
                                 objects: $(".page3 .properties"),
                                 indent:"3em",
@@ -774,24 +1110,29 @@
                     // we need the box to hold relevant details,
                     // var detail_css_prop these help the click object know which variable to use
                     // var detail_css_val;
+                    // var page_3_color; contains the initial dimensions of the page3 color section, instead of the user typing in colors, they choose collos and advanced colors
+                    // var $page_3_color_pallete is to hold the css color pallete while the user chooses a colo
+                    //page_3_color_final dimension to open up the color pallete
+                    // var page_3_execute, so it can go to the dimensions screen once finished
                     //////////////////////////////////////////////////////////
                         // prev and nxt buttons to move through the interface
                             {
                                 // helper function
                                 var interface_css_replace_width;
                                 var interface_css_replace_height;
-                                var interface_special_rules = {"transform-origin:after": ""
+                                var interface_special_rules = {"transform-origin:after": "",
+                                                               "transform":"0deg"
                                     
                                 }
                                     function haystack(css_rule,actual){
-                                        if(actual){
+                                        if(actual != false){
                                             if(css_rule.indexOf("box-shadow") == 0){
-                                                debug["interface object"][0] ? console.log(css_rule.split(":")[1].split("0)")[1]) : ""
+                                                debug["interface object"][4] ? console.log(css_rule.split(":")[1].split("0)")[1]) : ""
                                                 interface_css_replace["color"] =  interface_color_choice
                                                 return css_rule.split(":")[0] + ":" + interface_css_replace["color"]  +  css_rule.split(":")[1].split("0)")[1] + ";"
                                             }
                                             // the other browsers might have something to say
-                                            //  if desired then the box-shadow dimensions might need to be affect by the dimension ratio
+
                                             if(css_rule.indexOf("rgb(255, 0, 0)") != -1){
                                                 interface_css_replace["color"] =  interface_color_choice
                                                 debug["interface object"][4]  ? console.log(css_rule,interface_css_replace["color"]) : ""
@@ -799,36 +1140,46 @@
                                             if(css_rule.indexOf(interface_color_choice) != -1){
                                                 interface_css_replace["color"] = "rgb(255, 0, 0)"
     
-                                                debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                                debug["interface object"][4]  ? console.log(css_rule,interface_css_replace["color"]) : ""
+                                            }
+                                            // css_rule.split(":")[1].split(",")[1]
+                                            if(css_rule.indexOf("transform:") == 0 && css_rule.indexOf("norm") != -1){
+                                                debug["interface object"][0]  ? console.log(css_rule,interface_css_replace["width"],interface_css_replace["height"]) : ""
+                                                interface_css_replace["width"] = interface_css_replace["width"] == "" ? 1 : interface_css_replace["width"]
+                                                interface_css_replace["height"] = interface_css_replace["height"] == "" ? 1 : interface_css_replace["height"]
+                                                if(css_rule.indexOf("transform:matrix") != -1){
+
+                                                    if(parseFloat(css_rule.split(":")[1].split(",")[0].split("(")[1]) == 1 && parseFloat(css_rule.split(":")[1].split(",")[1]) == 0 ){
+                                                    debug["interface object"][0]  ?     console.log(css_rule.split(":")[1].split(",")[0].split("(")[1],css_rule.split(":")[1].split(",")[1],interface_css_replace["height"],interface_css_replace["width"]) : ""
+                                                         actual.css({
+                                                                        "height":interface_css_replace["height"] * numberParse($(actual).eq(0).css("height")),
+                                                                        "width":interface_css_replace["width"] * numberParse($(actual).eq(0).css("width"))
+                                                                    })
+                                                        return css_rule.split(":")[0] + ":" + css_rule.split(":")[1]   + ";"
+                                                    }
+                                                    // this means the image has been skewed or rotated through the z-index
+                                                    
+                                                    else{
+                                                        
+                                                        debug["interface object"][0]  ? console.log("executed on y",$(actual).attr("id")) : ""
+                                                        
+                                                     interface_css_replace["choice"] = "scale(" + interface_css_replace["width"].toString() + "," + interface_css_replace["height"].toString()  +");"
+                                                        return  css_rule.split(":")[0] + ":" + interface_css_replace["choice"]  + ";"
+                                                    }
+                                                    // this means the css is using transform to achieve the desired shape
+                                                    // 35deg
+                                                }
+                                                    
+                                                    else{
+                                                        debug["interface object"][0]  ? console.log("executed on x") : "    "
+                                                     interface_css_replace["choice"] = "scale(" + interface_css_replace["width"].toString() + "," + interface_css_replace["height"].toString()  +");"
+                                                        return  css_rule.split(":")[0] + ":" + interface_css_replace["choice"]  + ";"
+                                                    }
+                                                
+
                                             }
                                             
-                                            // if(css_rule.indexOf("height") == 0 || css_rule.indexOf("width") == 0 ){
-                                            //     debug["interface object"][0]  ? console.log("you cant get this somehow",css_rule) : ""
-                                            // }
-                                            if(css_rule.split(":")[1].indexOf("px") != -1 &&  (css_rule.indexOf("border") != -1 || css_rule.indexOf("margin-bottom") != -1 || css_rule.indexOf("margin") == -1  || css_rule.indexOf("height") == 0 || css_rule.indexOf("width") == 0 || css_rule.indexOf("transform-origin") == 0  ) ){
 
-                                                if((css_rule.indexOf("left") != -1 || css_rule.indexOf("right") != -1 || css_rule.indexOf("width") == 0 ) && !isNaN(interface_css_replace["width"])   ){
-                                                    debug["interface object"][0]  ? console.log(css_rule,numberParse(css_rule.split(":")[1]) ,parseFloat(interface_css_replace["width"])) : ""
-                                                    interface_css_replace_width = numberParse(css_rule.split(":")[1]) * parseFloat(interface_css_replace["width"])
-                                                    return  css_rule.split(":")[0] + ":" + interface_css_replace_width.toString() + "px"  + ";"
-                                                }
-                                                
-                                                
-                                                
-                                                else if((css_rule.indexOf("top") != -1 || css_rule.indexOf("bottom") != -1  || css_rule.indexOf("height") == 0) && !isNaN(interface_css_replace["height"]) ){
-                                                    debug["interface object"][0]  ? console.log(css_rule,numberParse(css_rule.split(":")[1]) , parseFloat(interface_css_replace["height"])) : ""
-                                                    interface_css_replace_height = numberParse(css_rule.split(":")[1]) * parseFloat(interface_css_replace["height"])
-                                                    return  css_rule.split(":")[0] + ":" + interface_css_replace_height.toString() + "px"  + ";"
-                                                }
-                                                
-                                                else if(css_rule.indexOf("transform-origin") == 0 && (!isNaN(interface_css_replace["width"]) && !isNaN(interface_css_replace["height"]))  ){
-                                                    debug["interface object"][0]  ? console.log("the final piece",css_rule.split(":")[1].split(" ")) : ""
-                                                    interface_special_rules["transform-origin:after"] = (numberParse(css_rule.split(":")[1].split(" ")[0]) * interface_css_replace["width"]).toString() + "px" + " " + (numberParse(css_rule.split(":")[1].split(" ")[1]) * interface_css_replace["height"]).toString() + "px"
-                                                        return  css_rule.split(":")[0] + ":" + interface_special_rules["transform-origin:after"]  + ";"
-                                                    
-                                                }
-                                                
-                                            }
                                         }
                                         return  css_rule.split(":")[0] + ":" + interface_css_replace["color"]  + ";"
                                     }
@@ -852,7 +1203,7 @@
                                         getStyleByQuery("html >" + css_default_tag).forEach(function(shade_style,i){
                                                     interface_css_replace["color"]  = shade_style.split(":")[1]
                                                     if( shade_style.split(":")[2] == "norm"){
-    
+                                                        
                                                         css_default_norm.push(haystack(shade_style,false))
                                                     }
                                                     if( shade_style.split(":")[2] == "before"){
@@ -868,23 +1219,23 @@
                                         getStyleByQuery(custom).forEach(function(shade_style,i){
                                                     interface_css_replace["color"]  = shade_style.split(":")[1]
                                                     if( shade_style.split(":")[2] == "norm"){
-                                                        if(css_default_norm[i].split(":")[1] != haystack(shade_style,true).split(":")[1]){
-                                                            interface_css_norm += haystack(shade_style,true)
+                                                        if(css_default_norm[i].split(":")[1] != haystack(shade_style,$(custom)).split(":")[1]){
+                                                            interface_css_norm += haystack(shade_style,$(custom))
                                                         }
                                                     }
                                                     if( shade_style.split(":")[2] == "before"){
-                                                        debug["interface object"][3] ? console.log(console.log(i - css_default_before.length ),css_default_before[i-css_default_before.length].split(":")[1],haystack(shade_style,true).split(":")[1]) : ""
+                                                        debug["interface object"][3] ? console.log(console.log(i - css_default_before.length ),css_default_before[i-css_default_before.length].split(":")[1],haystack(shade_style,$(custom)).split(":")[1]) : ""
                                                         
-                                                        if(css_default_before[i-css_default_before.length].split(":")[1] != haystack(shade_style,true).split(":")[1]){
-                                                            interface_css_before +=haystack(shade_style,true)
+                                                        if(css_default_before[i-css_default_before.length].split(":")[1] != haystack(shade_style,$(custom)).split(":")[1]){
+                                                            interface_css_before +=haystack(shade_style,$(custom))
                                                         }
                                                     }
                                                     if( shade_style.split(":")[2] == "after"){
 
-                                                        debug["interface object"][3] ? console.log(console.log(i - (css_default_before.length + css_default_after.length) ),css_default_before[i-(css_default_before.length + css_default_after.length)].split(":")[1],haystack(shade_style,true).split(":")[1]) : ""
+                                                        debug["interface object"][3] ? console.log(console.log(i - (css_default_before.length + css_default_after.length) ),css_default_before[i-(css_default_before.length + css_default_after.length)].split(":")[1],haystack(shade_style,$(custom)).split(":")[1]) : ""
     
-                                                        if(css_default_after[i - (css_default_before.length + css_default_after.length)].split(":")[1] != haystack(shade_style,true).split(":")[1]){
-                                                            interface_css_after +=haystack(shade_style,true)
+                                                        if(css_default_after[i - (css_default_before.length + css_default_after.length)].split(":")[1] != haystack(shade_style,$(custom)).split(":")[1]){
+                                                            interface_css_after +=haystack(shade_style,$(custom))
                                                         }
                                                     }
                                         })
@@ -892,6 +1243,20 @@
                                         css_default_before = [];
                                         css_default_after = [];
                                         $("html >" + css_default_tag).remove()
+                                        if($(custom).attr("id") == "star-five"){
+                                            
+                                            $(custom).after("<div class = 'html_object_" + interface_group.toString() + "_transform'></div>")
+                                            debug["interface object"][0] ? console.log($(".html_object_" + interface_group.toString() + "_transform")) : ""
+                                            
+                                            $(".html_object_" + interface_group.toString()).wrap($(".html_object_" + interface_group.toString() + "_transform").css({
+                                                "transform":"35deg"
+                                            }))
+                                            
+                                            
+                                            $(".html_object_" + interface_group.toString() + "_transform").eq(1).remove()
+                                            
+                                            // $(".html_object_" + interface_group.toString() + "_transform")
+                                        }
                                         debug["interface object"][3] ? console.log(interface_css_norm, interface_css_before, interface_css_after) : ""
                                     }
                                 ///////////////////////////////////////////////////////////////////
@@ -1040,9 +1405,9 @@
                                             $(".page2 textarea").eq(0).val() != "" ? $(".prototype").addClass("user-" + $(".page2 textarea").eq(0).val()) : ""
                                             $(".prototype").adv_clone(parseInt($(".page2 textarea").eq(1).val()))
                                             $(".page2 ").css({
-                                            "margin-left":"-500px",
-                                            "opacity":"0"
-                                        })
+                                                "margin-left":"-500px",
+                                                "opacity":"0"
+                                            })
                                             $(".page3:first").css({
                                                 "margin-left":"3em",
                                                 "margin-top":"-40em",
@@ -1061,10 +1426,10 @@
                         // item in case she wants to use it later
                         // for the 3rd part the prototypes have to be responsive
                         //////////////////////////////////////////////////////////
-                        $(".interface > div >div").click(function(event){
-                            debug["interface object"][2] ? console.log("label and amount") : ""
-                            // $(".interface > div").hide()
-                        })
+                        // $(".interface > div >div").click(function(event){
+                        //     debug["interface object"][2] ? console.log("label and amount") : ""
+                        //     // $(".interface > div").hide()
+                        // })
 
                 }
                 //////////////////////////////////////////////////////////
@@ -1112,7 +1477,7 @@
             var topspace = 0;
             $.map($("body > *"),function(outside,no){
                 debug["external objects"][0] ? console.log($(outside).css("position"),$(outside).css("top"),$(outside).css("margin-top"),$(outside)) : ""
-                if($(outside)["0"].classList[0] != "html_page"){
+                if($(outside)["0"].classList[0] != "html_page" ){
                     $(outside).css({
                         "position":"relative",
                         "top":topspace += numberParse($("body > *").eq(no -1).css("height"))
@@ -1150,12 +1515,208 @@
     // test objects ill deal with this when I find necessary
     $(".interface").trigger("click")
     $(".page2 textarea").eq(1).text("1")
-    $(".page3 > .properties textarea ").text("6")
-    $(".page3 > .properties textarea ").eq(2).text("blue")
-    // $(".interface ul a:last").trigger("click")
-    // $(".interface ul a:last").trigger("click")
+    $(".page3 > .properties textarea ").eq(0).text("1.5")
+    $(".page3 > .properties textarea ").eq(1).text("1.5")
+
+    // $(".page3 > .properties textarea ").eq(2).text("")
+    
+    $(".gradient-holder").click(function(event){console.log(event)})
+    $(".gradient-holder").offset()
+// {
+// var events = []
+
+// var e = new jQuery.Event("click");
+// e.screenX = parseInt($(".gradient-holder").offset().left)
+// e.screenY = parseInt($(".gradient-holder").offset().top);
+// e.which = 1
+// e.width =   parseInt(document.querySelector(".gradient-holder").getBoundingClientRect().width)
+// e.height =   parseInt(document.querySelector(".gradient-holder").getBoundingClientRect().height)
+// var pixelArray = []
+
+//     $(".outer").click(function(event){
+        
+//         events.push(event)
+//         pixelArray.push([event.pageX,event.pageY])
+        
+//     })
+// function get_by_Pixel(startX,startY,width,height,shape_area,endX,endY){
+    
+
+    
+//     while(startX <= endX){
+//         while(startY <= endY){
+//             console.log("executing",e.pageX,e.pageY,document.elementFromPoint(startX, startY))
+//             $(".outer").trigger(e);
+            
+//             startY += 20
+//             e.pageY = startY
+//         }
+//         startY -= height
+//         startX += 20
+//         e.screenX = startX
+//     }
+    
+// }
+
+// get_by_Pixel(e.pageX,e.pageY,e.width,e.height,".outer",e.pageX + e.width,e.pageY + e.height)
+
+// var initial_i
+// var initial_ii
+// var final_i
+// var final_ii
+// var differences = []
+// function difference(inside,outside){
+//         initial_i =  Object.keys(inside)
+//         initial_ii = Object.keys(inside).map(function(key){return typeof(inside[key])})
+        
+//         final_i =    Object.keys(outside)
+//         final_ii =   Object.keys(outside).map(function(key){return typeof(outside[key])})
+        
+//             console.log("initial i ",initial_i)
+//             console.log("final i ",final_i)
+//         if(initial_i.length == final_i.length){
+//             initial_ii = Object.keys(inside).map(function(key){return inside[key]})
+//             final_ii =   Object.keys(outside).map(function(key){return outside[key]})
+//             initial_ii.forEach(function(x,i){
+//                 if((typeof(x) == "object" && typeof(final_ii[i]) == "object" ) && (x != null && final_ii[i] != null ) ){
+//                     console.log("taking",initial_i[i],x ,final_ii[i] )
+//                     difference($(x),$(final_ii[i]))
+//                 }
+//                 else{
+//                     console.log(x == final_ii[i])
+//                     if(x != final_ii[i]) {
+//                         differences.push([initial_i[i],x,final_i[i],final_ii[i]])
+//                     }
+//                 }
+//             })
+//         }
+//         else{
+//             console.log("initial i diff",initial_i)
+//             console.log("final i diff",final_i)
+//             differences.push(initial_i,final_i)
+//         }
+        
+// }
+// difference(events[0],events[0])
+// }
+//   document.querySelector(".gradient-holder").addEventListener("click", function( event ) {
+//     // display the current click count inside the clicked div
+//     console.log(event)
+//   }, false);
+
+    var test_areas = ["Generate a bounding box for the shape","Click here to test"]
+    $("body").append("<div class = 'test well'></div>")
+    $(".test").css({
+        "width":"270px",
+        "height":"255px",
+        "border-radius":"0px",
+        "position":"fixed",
+        "top":"0px",
+        "left":"0px"
+        
+    })
+    
+    
+    // for some reason check browser compatibility
+
+    $(".test").append("<div class = 'test_button well'></div>")
+    $.map($(".test_button").adv_clone(2),function(x,i){
+        x.text(test_areas[i])
+    })
+    
+        //generate a bounding box for the shape
+            
+            //helper function
+                var pixelArray = {
+                    minX:0,
+                    maxX:0,
+                    minY:0,
+                    maxY:0,
+                }
+
+                function gathering_true_dimension(x,y,object_dm){
+                     console.log("running")
+                     pixelArray["minX"] =numberParse($(object_dm).css("width"))
+                      pixelArray["minY"] = numberParse($(object_dm).css("height"))
+                    while(x != numberParse($(object_dm).css("width"))){
+                        
+                        while(y != numberParse($(object_dm).css("height"))){
+                            if($(document.elementsFromPoint(x,y)[0]).hasClass("shapes")){
+                                
+                                x < pixelArray["minX"] ? pixelArray["minX"] = x : ""
+                                x > pixelArray["maxX"] ? pixelArray["maxX"] = x : ""
+                                y < pixelArray["minY"] ? pixelArray["minY"] = y : ""
+                                y > pixelArray["maxY"] ? pixelArray["maxY"] = y : ""
+                            }
+                            
+                            y += 1
+                        }
+                        x += 1
+                        y = 0
+                        
+                    }
+                    console.log("finsihed",pixelArray)
+                    
+                }
+            /////////////////////////////////////////////////////////////////////////////
+            // this function runs a a pixel run in the shape of the test object and figures the true bounding
+            // box of the element with the pseudo elements considered
+            // using elementsFromPoint is a  breakthough but it also experimentnal
+            /////////////////////////////////////////////////////////////////////////////
+            $(".test_button").eq(0).click(function(event){
+                
+                $(".test_button").hide()
+                if(event.originalEvent ==undefined){
+                    // interface_counter = 13
+                    
+                        $(".test").append("<div class = 'shape_tester'><div class = 'shapes ' id = " + interface_shapes[interface_counter] + "></div></div>")
+                        $(".test  .shape_tester").css({
+                            "margin-top":"33px",
+                            "margin-left":"15px"
+                        })
+                        gathering_true_dimension(0,0,".test")
+                        $(".shape_tester").css({
+                            "background": "linear-gradient(red, yellow, green)",
+                            "width":pixelArray["maxX"] - pixelArray["minX"],
+                            "height":pixelArray["maxY"] - pixelArray["minY"],
+                            "z-index":"2"
+                        })
+                        $(".shape_tester .shapes").css({
+                            "background":"linear-gradient(red, yellow, green)"
+                        })
+                    
+                }
+                
+            })
+        
+        
+        /////////////////////////////////////////////////////////////////////////
+        // shapes taht dont need a background
+        //  square
+        //  rect
+        //  circle
+        //  oval
+        // parallelogram
+        // egg
+        // tv
+        // base
+        /////////////////////////////////////////////////////////////////////////
+
     ////////////////////////////////////////////////////////////////////
-    //
+    //this function will find out how to get the height and width of our shapes, by using the offset of the gradient holder and by
+    // clicking each pixel in the gradient holder and returning the coordinates of the shape to an array, then determing which is the max and the min
+    // var test_areas hold the names describing basic tests
+    ////////////////////////////////////////////////////////////////////
+    
+
+    ////////////////////////////////////////////////////////////////////
+    //the test object was needed to be made, however it was made now to determine the max height and with of an object
+    //  the API needs to do this consistently, but the work needs to be coming from the DOM, so this will done using a test object
+    // the test objects runs any given test required to collect simple data that is collected using complex scripts
+    // the test object could also handle advanced calcuations that need to be done in the DOM and might have to return things high as dynamic level objects, but we hope we do not go there, or the properties can be saved as functions waiting to be called haha,
+    // the test object will be a hidden object in the browser
     ////////////////////////////////////////////////////////////////////
 
 })
+
+

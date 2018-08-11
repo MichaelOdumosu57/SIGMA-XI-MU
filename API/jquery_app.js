@@ -4,7 +4,8 @@
       var debug ={"checking device width":[false,false],
                 "external objects":[false,false],
                 "debug object.self":[false,false,false,false],
-                "interface object": [true,false,true,false]
+                "interface object": [true,false,true,false],
+                "color pallete":[true,false,false]
                 }
   ///////////////////////////////////////////////////////
   //  to work on this advanced form website development it is essential we have a good debug program, some sort now

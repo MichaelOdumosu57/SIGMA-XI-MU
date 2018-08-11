@@ -6,3 +6,4 @@ Can change fully any color in the shapes palette from the website_shapes.css fil
 Mozilla and chrome are now compatible when recoloring elements ++ psuedo elements and can do it rather quickly
 API makes difference as to what objects are placed into screen
 API, can resize almost all object based on square ratio only, that meeans the quotient in height and width must be one
+API, for height and width embellishments seems to be able to reform all shapes properly

@@ -164,9 +164,23 @@ which are narrow head
    -o-transform:      rotate(-46.6666666667deg);
    content: '';
 }
-I choose first narrow head because, as the wider the user decides to spread the star the thinner the top should be
+I choose relative head because, as the wider the user decides to spread the star the thinner the top should be
 or a relative head
+1;1
+norm
+matrix(0.34202, -0.939693, 0.939693, 0.34202, 0, 0)
+before
+matrix(0.819152, -0.573576, 0.573576, 0.819152, 0, 0)
+after
+matrix(0.34202, -0.939693, 0.939693, 0.34202, 0, 0)
 
+1:2
+norm
+matrix(0.918216, 0.39608, -0.39608, 0.918216, 0, 0)
+before
+matrix(0.918216, -0.39608, 0.39608, 0.918216, 0, 0)
+after
+matrix(0.686242, -0.727374, 0.727374, 0.686242, 0, 0)
 #star-five.shapes {
    margin: 75px 0;
    position: relative;
@@ -189,7 +203,7 @@ or a relative head
    position: absolute;
    height: 0;
    width: 0;
-   top: -60px;
+   top: -67.5px;
    left: -65px;
    display: block;
    content: '';
@@ -199,6 +213,15 @@ or a relative head
    -o-transform:      rotate(-23.3333333333deg);
 
 }
+need to change
+borderbottom
+120
+top
+-45 -67.5
+left
+-97.5  -65
+transform origin
+45 40 -> 45  60
 #star-five.shapes:after {
    position: absolute;
    display: block;
@@ -273,6 +296,7 @@ to heighten the element
 special bugs with our algorithm
 
 
+square
 
 pentagon
 dimensions are sligtly off
@@ -295,3 +319,33 @@ moon
 
 design idea
 have box shadows hit object where info belongs, one box shadows hit the object fill it with the respective information
+
+
+firefox
+
+hexagox, top and bottom are slightly coming off
+base coming off too
+
+
+--height
+
+chrome
+    star-5
+    pentagon
+    heart
+    burst-12
+    burst-8
+    badge-ribbion
+    cone
+    if the disparaity is too large it will turn to an egg
+    
+    
+--width
+
+chrome
+    star-5 may be angling problems
+    heart may be angling problems
+    burst-12
+    burst-8
+    badge - turns to a chef hat should we fix it haha
+    magnifying glass

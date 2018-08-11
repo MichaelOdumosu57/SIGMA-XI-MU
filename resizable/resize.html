@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script>
+            $('button').click(function () {
+
+                 $('.box').toggleClass('box-rotate');
+
+            });
+        </script>
+
+        
+        <style>
+            .box {
+              background: lightblue;
+              width: 200px;
+              height: 200px;
+              margin: 20px auto;
+              transition: transform 1s linear;
+              transform-origin: top left;
+              transform-style: preserve-3D;
+            }
+            
+            .box-rotate {
+              transform: rotate(360deg);
+            }
+            
+            button {
+              display: block;
+              margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+
+        <button>click me</button>
+    </body>
+</html>

@@ -30,6 +30,8 @@
     // y_spacing -- amount of vertical space between each object in pretty print, this is needed as row creation of how many objects are in the row depends on it, if you don't place one its default is 10
     // leftover -- decides how much leftover there will be for the last item in the row and the end width of the container object
     // indent -- decides initial space for row starting, now it 4% because all containers are different. For customization of each row, you need an array and the array must be numbers or else it will bug. Also if there are more rows and you specify less options for each, it will indent at the last item in the array
+    // pretty_container_height if the containers height is incorrect
+    //pretty_container_width if the containers width  is incorrect
 
 
 var pretty_call;
